@@ -27,7 +27,7 @@ listing:
       author: "2024"
 
     - path: https://github.com/ropensci/slopes
-      image: https://pbs.twimg.com/media/ErJ2dr8WMAIHwMn?format=jpg&name=small
+      image: https://user-images.githubusercontent.com/1825120/121820334-2435f080-cc8a-11eb-962c-79dcba97e459.png
       title: "Slopes"
       description: "I am helping maintaining and updating this R package focused on calculate slopes of roads, rivers and trajectories"
       categories: [R code]
