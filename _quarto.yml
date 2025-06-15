@@ -4,10 +4,12 @@ project:
 website:
   title: "Gonçalo Matos"
   navbar:
-    left:
+    search: false
+    right:
       - href: index.qmd
         text: Home
-      - about.qmd
+      - projects.qmd
+      - contacts.qmd
 
 format:
   html:
@@ -15,7 +17,7 @@ format:
       - cosmo
       - brand
     css: styles.css
-    toc: true
+    toc: false
 
 
 

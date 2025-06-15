@@ -1,7 +1,38 @@
 ---
 title: "Gonçalo Matos"
+about:
+    template: jolla
+    image: /images/profile.jpeg
+    links:
+
+        - icon: journals
+          text: U-Shift research group
+          href: https://ushift.tecnico.ulisboa.pt/team-goncalo-matos/ 
+          target: _blank
+
+        - icon: github
+          text: GitHub
+          href: https://github.com/gmatosferreira
+          target: _blank
+
+        - icon: bookmark-check-fill
+          text: ORCID
+          href: https://orcid.org/0009-0001-3489-1732
+          target: _blank
+
+        - icon: linkedin
+          text: LinkedIn
+          href: https://www.linkedin.com/in/goncalofmatos/
+          target: _blank
+format:
+  html:
+    css: /styles/index.css
 ---
 
-This is a Quarto website.
+# Hi, I'm Gonçalo!
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+I am a programmer who is interested in writing (not only code), mobility and equality. 
+
+Currently I am exploring the transportation world, writing my master's dissertation on Transportation Systems and assisting U-Shift urban mobility lab on their research projects.
+
+# 💻🛤️🧑‍🤝‍🧑
