@@ -2,7 +2,7 @@
 title: "Gonçalo Matos"
 about:
     template: jolla
-    image: /images/profile.jpeg
+    image: ./images/profile.jpeg
     links:
 
         - icon: journals
