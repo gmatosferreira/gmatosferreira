@@ -1,0 +1,23 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Gonçalo Matos",
+    "section": "",
+    "text": "Hi, I’m Gonçalo!\nI am a programmer who is interested in writing (not only code), mobility and equality.\nCurrently I am exploring the transportation world, writing my master’s dissertation on Transportation Systems and assisting U-Shift urban mobility lab on their research projects.\n\n\n💻🛤️🧑‍🤝‍🧑"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "Projects",
+    "section": "",
+    "text": "GTFShift\n\n\n\nR code\n\n\nGTFS standard\n\n\n\nR package to explore and analyse GTFS files with a focus on identifying high frequency corridors\n\n\n\n2025 (Ongoing)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Lisboa Para Pessoas\n\n\n\nMedia\n\n\n\nAt LPP I merge my passions for writing and the transportation world, covering stories about mobility and urban dynamics\n\n\n\n2024 (Ongoing)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n CP Real time info\n\n\n\nJava code\n\n\nMQTT protocol\n\n\nReact framework\n\n\nGTFS standard\n\n\n\nReal time monitoring of trains’ position and occupancy to improve passenger information\n\n\n\n2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSlopes\n\n\n\nR code\n\n\n\nI am helping maintaining and updating this R package focused on calculate slopes of roads, rivers and trajectories\n\n\n\n2025 (Ongoing)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSpreadsheet to GTFS\n\n\n\nR code\n\n\nGTFS standard\n\n\n\nA simple script that enables the generation of a GTFS feed from a simple spreadsheet\n\n\n\n2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDawn transit network analsyis\n\n\n\nR code\n\n\nWeb tool\n\n\nGTFS standard\n\n\n\nAggregated analysis of transit offer in Lisbon Metro Area during the night time\n\n\n\n2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nShadeMap download tool\n\n\n\nWeb tool\n\n\n\nInteractive tool that allows to export shadow and sun exposure layers from ShadeMap over a custom area, with a high level of detail\n\n\n\n2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMapping a pedestrian network\n\n\n\nQGIS\n\n\nPython code\n\n\n\nMethodology for mapping a pedestrian network on the field using QField app\n\n\n\n2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCP Timetables\n\n\n\nJava code\n\n\nReact framework\n\n\n\nAutomation of the timetable generation process to assist the client management team\n\n\n\n2023\n\n\n\n\n\n\n\n\nNo matching items"
+  }
+]
