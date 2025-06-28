@@ -5,6 +5,12 @@ format:
     page-layout: full
 ---
 
+✉️ goncaloafmatos[at]tecnico.pt
+
 <!-- Google Calendar Appointment Scheduling begin -->
-<iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3syUWzPFhR5XHcQAqeetA0R0VI0F5oolyOD-HCkQf6G7Ze0Wdj3w08qaESLS0gtfikUMJRxOsp?gv=true" style="border: 0" width="100%" height="600" frameborder="0"></iframe>
+<iframe 
+  src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3syUWzPFhR5XHcQAqeetA0R0VI0F5oolyOD-HCkQf6G7Ze0Wdj3w08qaESLS0gtfikUMJRxOsp?gv=true" 
+  style="border: 0" width="100%" height="600" 
+  frameborder="0"
+></iframe>
 <!-- end Google Calendar Appointment Scheduling -->
