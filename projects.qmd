@@ -70,8 +70,8 @@ listing:
 ---
 
 <script>
-  // Script to override listing hyperlinks behaviour, forcing to open them on new tab
   document.addEventListener('DOMContentLoaded', function () {
+    // Script to override listing hyperlinks behaviour, forcing to open them on new tab
     const container = document.querySelector('#listing-listing');
     if (container) {
       const links = container.querySelectorAll('a');
@@ -79,5 +79,19 @@ listing:
         link.setAttribute('target', '_blank');
       });
     }
+
+    // Script to change elements order (first projects list, then contributions)
+    const listing = document.getElementById("listing-listing");
+    const contributions = document.getElementById("contributions-to-other-projects");
+
+    if (listing && contributions) {
+      // Insert contributions right after the listing
+      listing.parentNode.append(contributions);
+    }
   });
 </script>
+
+
+# Contributions to other projects
+
+- [gtfsrouter](https://github.com/UrbanAnalyst/gtfsrouter/releases/tag/v0.1.4){target="_blank"}, a R package to route and analyse GTFS data
