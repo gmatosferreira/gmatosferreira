@@ -207,16 +207,22 @@ window.Quarto = {
 
     // Script to change elements order (first projects list, then contributions)
     const listing = document.getElementById("listing-listing");
-    const contributions = document.getElementById("contributions-to-other-projects");
 
+    const contributions = document.getElementById("other-contributions");
     if (listing && contributions) {
       // Insert contributions right after the listing
       listing.parentNode.append(contributions);
     }
+
+    const beyond = document.getElementById("beyond-academia");
+    if (listing && beyond) {
+      // Insert contributions right after the listing
+      listing.parentNode.append(beyond);
+    }
   });
 </script>
-<section id="contributions-to-other-projects" class="level1">
-<h1>Contributions to other projects</h1>
+<section id="other-contributions" class="level1">
+<h1>Other contributions</h1>
 <ul>
 <li><a href="https://github.com/UrbanAnalyst/gtfsrouter/releases/tag/v0.1.4" target="_blank">gtfsrouter</a>, a R package to route and analyse GTFS data</li>
 </ul>
