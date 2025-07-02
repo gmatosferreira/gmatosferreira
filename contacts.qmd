@@ -14,3 +14,13 @@ format:
   frameborder="0"
 ></iframe>
 <!-- end Google Calendar Appointment Scheduling -->
+
+# Beyond academia
+
+In my leasure time I like to cycle, read, take photographs and get involved with the community.
+If you share any of these hobbies, feel free to connect with me using the links below!
+
+<a href="https://www.strava.com/athletes/133287856" target="_blank" class="btn btn-light btn-sm"><i class='bi bi-person-walking'></i> Strava</a>
+<a href="https://www.goodreads.com/user/show/114993391-gon-alo-matos" target="_blank" class="btn btn-light btn-sm"><i class='bi bi-book'></i> Goodreads</a>
+<a href="https://unsplash.com/pt-br/@goncaloafmatos" target="_blank" class="btn btn-light btn-sm"><i class='bi bi-camera'></i> Unsplash</a>
+

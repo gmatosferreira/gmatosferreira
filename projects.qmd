@@ -82,16 +82,23 @@ listing:
 
     // Script to change elements order (first projects list, then contributions)
     const listing = document.getElementById("listing-listing");
-    const contributions = document.getElementById("contributions-to-other-projects");
 
+    const contributions = document.getElementById("other-contributions");
     if (listing && contributions) {
       // Insert contributions right after the listing
       listing.parentNode.append(contributions);
+    }
+
+    const beyond = document.getElementById("beyond-academia");
+    if (listing && beyond) {
+      // Insert contributions right after the listing
+      listing.parentNode.append(beyond);
     }
   });
 </script>
 
 
-# Contributions to other projects
+# Other contributions
 
 - [gtfsrouter](https://github.com/UrbanAnalyst/gtfsrouter/releases/tag/v0.1.4){target="_blank"}, a R package to route and analyse GTFS data
+
