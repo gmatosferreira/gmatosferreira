@@ -10,6 +10,11 @@ website:
         text: Home
       - projects.qmd
       - contacts.qmd
+  page-footer: 
+    left: "Developed with Quarto open-source publishing tool" 
+    right: 
+      - icon: github
+        href: https://github.com/gmatosferreira/gmatosferreira
 
 format:
   html:
