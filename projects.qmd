@@ -19,8 +19,8 @@ listing:
       categories: [Media]
       author: "2024 (Ongoing)"
 
-    - path: https://www.cp.pt/institucional/pt/comunicacao/notas-imprensa/info-tempo-real
-      image: https://www.cp.pt/StaticFiles/Passageiros/6_tranversais/destaques/proximos-comboios-p.jpg
+    - path: https://www.cp.pt/info/w/real-time-info-project
+      image: /images/projects/cp-realtime-banner.jpg
       title: "<i class='bi bi-pin-angle-fill'></i> CP Real time info"
       description: "Real time monitoring of trains' position and occupancy to improve passenger information"
       categories: [Java code, MQTT protocol, React framework, GTFS standard]
