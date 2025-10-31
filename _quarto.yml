@@ -1,0 +1,28 @@
+project:
+  type: website
+
+website:
+  title: "Gonçalo Matos"
+  navbar:
+    search: false
+    right:
+      - href: index.qmd
+        text: Home
+      - projects.qmd
+      - contacts.qmd
+  page-footer: 
+    left: "Developed with Quarto open-source publishing tool" 
+    right: 
+      - icon: github
+        href: https://github.com/gmatosferreira/gmatosferreira
+
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+    css: styles.css
+    toc: false
+
+
+
