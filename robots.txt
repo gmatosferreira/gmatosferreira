@@ -1,1 +1,1 @@
-Sitemap: https://wwww.gmatos.pt/sitemap.xml
+Sitemap: https://gmatos.pt/sitemap.xml
