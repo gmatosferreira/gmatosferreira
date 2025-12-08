@@ -5,6 +5,13 @@ listing:
   categories: true
   contents:
 
+    - path: https://scholar.tecnico.ulisboa.pt/authors/ist1108284/records
+      image: /images/projects/master.jpg
+      title: "<i class='bi bi-pin-angle-fill'></i> Through the bus driver's eye"
+      description: "Master thesis on Transportation Systems, focused on how drivers knowledge can be used to monitor and plan a bus network"
+      categories: [R code, Python, Publications]
+      author: "2025"
+
     - path: https://github.com/U-Shift/GTFShift
       image: https://github.com/U-Shift/busclar/raw/main/map_carris.png
       title: "<i class='bi bi-pin-angle-fill'></i> GTFShift"
@@ -16,15 +23,8 @@ listing:
       image: https://lisboaparapessoas.pt/wp-content/uploads/2024/01/jornalppanuncio.png
       title: "<i class='bi bi-pin-angle-fill'></i> Lisboa Para Pessoas"
       description: "At LPP I merge my passions for writing and the transportation world, covering stories about mobility and urban dynamics"
-      categories: [Media]
+      categories: [Media, Publications]
       author: "2024 (Ongoing)"
-
-    - path: https://www.cp.pt/info/w/real-time-info-project
-      image: /images/projects/cp-realtime-banner.jpg
-      title: "<i class='bi bi-pin-angle-fill'></i> CP Real time info"
-      description: "Real time monitoring of trains' position and occupancy to improve passenger information"
-      categories: [Java code, MQTT protocol, React framework, GTFS standard]
-      author: "2024"
 
     - path: https://github.com/ropensci/slopes
       image: https://user-images.githubusercontent.com/1825120/121820334-2435f080-cc8a-11eb-962c-79dcba97e459.png
@@ -54,18 +54,25 @@ listing:
       categories: [Web tool]
       author: "2025"
 
+    - path: https://www.cp.pt/info/w/real-time-info-project
+      image: /images/projects/cp-realtime-banner.jpg
+      title: "CP Real time info"
+      description: "Real time monitoring of trains' position and occupancy to improve passenger information"
+      categories: [Java, MQTT protocol, React framework, GTFS standard]
+      author: "2024"
+
     - path: https://github.com/gmatosferreira/Mapping-a-pedestrian-network
       image: https://github.com/gmatosferreira/Mapping-a-pedestrian-network/raw/main/files/network.png
       title: "Mapping a pedestrian network"
       description: "Methodology for mapping a pedestrian network on the field using QField app"
-      categories: [QGIS, Python code]
+      categories: [QGIS, Python]
       author: "2024"
 
     - path: https://www.cp.pt/passageiros/pt/consultar-horarios
       image: /images/projects/cp-timetables.png
       title: "CP Timetables"
       description: "Automation of the timetable generation process to assist the client management team"
-      categories: [Java code, React framework]
+      categories: [Java, React framework]
       author: "2023"
 ---
 
@@ -98,9 +105,14 @@ listing:
 
 # Other contributions
 
-- [gtfsrouter](https://github.com/UrbanAnalyst/gtfsrouter/releases/tag/v0.1.4){target="_blank"}, a R package to route and analyse GTFS data (06/2025)
+- [OpenStreetMap](https://www.openstreetmap.org/user/Gon%C3%A7alo%20Matos/history){target="_blank"}, where I often contribute with improvements on transit data (04/2025 - Present) 
+
+- [gtfsrouter](https://github.com/UrbanAnalyst/gtfsrouter/releases/tag/v0.1.4){target="_blank"}, an R package to route and analyse GTFS data (06/2025)
+
 
 # Presentations
+
+- [SiteSelection](https://docs.google.com/presentation/d/1ywH9UABP6ts086GQrb0SJvu7B2WnsHcwhLTc9lC7g8M/edit?usp=sharing){target="_blank"}, a keynote speech on this R package to identify complex areas, presented on [Streets4All Closing Seminar](https://streets4all.tecnico.ulisboa.pt/seminar/){target="_blank"} (12/2025)
 
 - [Dawn transit network analysis](https://lxparapessoas.github.io/rede-madrugada/slides){target="_blank"}, a lecture on scenario analysis of transit data, presented on Rosa Félix course on [Modelling of Transport Systems](https://u-shift.github.io/Traffic-Simulation-Models/){target="_blank"} course of the Master in Transportation Systems at Instituto Superior Técnico (University of Lisbon) (10/2025)
 
@@ -109,4 +121,10 @@ listing:
 
 # Events organization
 
+- [Streets4All Closing Seminar](https://streets4all.tecnico.ulisboa.pt/seminar/){target="_blank"}, an event to share the results of this project focused on dynamic and equitable reallocation of urban street space
+
+  > Event microsite creation, booklet edition, poster creation and logistic coordination 
+
 - [DTN Annual Forum 2025](https://u-shift.github.io/DTNlisbon){target="_blank"}, the EIT Doctoral Training Network annual event that gathers experts, scholars, and industry leaders from around the world to discuss the latest advancements in urban mobility (09/2025)
+
+  > Event website creation (with Quarto), logistical support 
