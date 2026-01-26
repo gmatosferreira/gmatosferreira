@@ -9,7 +9,7 @@ listing:
       image: /images/projects/master.jpg
       title: "<i class='bi bi-pin-angle-fill'></i> Through the bus driver's eye"
       description: "Master thesis on Transportation Systems, focused on how drivers knowledge can be used to monitor and plan a bus network"
-      categories: [R code, Python, Publications]
+      categories: [R code, Python, Publications, Public policies, Transport planning]
       author: "2025"
 
     - path: https://u-shift.github.io/GTFShift/
@@ -25,6 +25,13 @@ listing:
       description: "At LPP I merge my passions for writing and the transportation world, covering stories about mobility and urban dynamics"
       categories: [Media, Publications]
       author: "2024 (Ongoing)"
+
+    - path: https://u-shift.github.io/IMPT-web/
+      image: /images/projects/imtp.jpg
+      title: "Transport Poverty Index"
+      description: "Open and replicable index that enables measurement and monitoring of transport poverty"
+      categories: [R code, Public policies, Transport planning]
+      author: "2026 (Ongoing)"
 
     - path: https://github.com/ropensci/slopes
       image: https://user-images.githubusercontent.com/1825120/121820334-2435f080-cc8a-11eb-962c-79dcba97e459.png
