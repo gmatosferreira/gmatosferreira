@@ -5,14 +5,14 @@ listing:
   categories: true
   contents:
 
-    - path: https://scholar.tecnico.ulisboa.pt/authors/ist1108284/records
+    - path: https://scholar.tecnico.ulisboa.pt/records/vFoffyTV2ecQpcAMjga_ZVmh-boLRO5P89fo
       image: /images/projects/master.jpg
       title: "<i class='bi bi-pin-angle-fill'></i> Through the bus driver's eye"
       description: "Master thesis on Transportation Systems, focused on how drivers knowledge can be used to monitor and plan a bus network"
       categories: [R code, Python, Publications]
       author: "2025"
 
-    - path: https://github.com/U-Shift/GTFShift
+    - path: https://u-shift.github.io/GTFShift/
       image: https://github.com/U-Shift/busclar/raw/main/map_carris.png
       title: "<i class='bi bi-pin-angle-fill'></i> GTFShift"
       description: "R package to  explore and analyse GTFS files with a focus on identifying high frequency corridors"
@@ -54,7 +54,7 @@ listing:
       categories: [Web tool]
       author: "2025"
 
-    - path: https://www.cp.pt/info/w/real-time-info-project
+    - path: https://www.cp.pt/info/en/w/real-time-info-project
       image: /images/projects/cp-realtime-banner.jpg
       title: "CP Real time info"
       description: "Real time monitoring of trains' position and occupancy to improve passenger information"
@@ -68,7 +68,7 @@ listing:
       categories: [QGIS, Python]
       author: "2024"
 
-    - path: https://www.cp.pt/passageiros/pt/consultar-horarios
+    - path: https://cp.pt/info/en/w/trains-timetables-pdf
       image: /images/projects/cp-timetables.png
       title: "CP Timetables"
       description: "Automation of the timetable generation process to assist the client management team"
@@ -90,7 +90,7 @@ listing:
     // Script to change elements order (first projects list, then contributions)
     const listing = document.getElementById("listing-listing");
 
-    const sections = ["other-contributions", "presentations", "events-organization"];
+    const sections = ["publications", "other-contributions", "presentations", "events-organization"];
 
     if (listing) {
       const parent = listing.parentNode;
@@ -103,7 +103,14 @@ listing:
 </script>
 
 
+# Publications
+
+- Gonçalo Matos, Rosa Félix, Filipe Moura. **From the Steering Wheel to the Planning Table: A Participatory Framework for Bus Network Monitoring and Planning**. *Paper under review.*
+
+
 # Other contributions
+
+- [Público](https://www.publico.pt/autor/goncalo-matos){target="_blank"}, the Portuguese newspaper where I casually write opinion articles about transportation (12/2025 - Present)
 
 - [OpenStreetMap](https://www.openstreetmap.org/user/Gon%C3%A7alo%20Matos/history){target="_blank"}, where I often contribute with improvements on transit data (04/2025 - Present) 
 
@@ -113,6 +120,8 @@ listing:
 # Presentations
 
 - [SiteSelection](https://docs.google.com/presentation/d/1ywH9UABP6ts086GQrb0SJvu7B2WnsHcwhLTc9lC7g8M/edit?usp=sharing){target="_blank"}, a keynote speech on this R package to identify complex areas, presented on [Streets4All Closing Seminar](https://streets4all.tecnico.ulisboa.pt/seminar/){target="_blank"} (12/2025)
+
+- [Through the Bus Driver’s Eye](https://gmatosferreira.github.io/master-thesis/slides_short.html){target="_blank"}, the public defense of my master thesis, focused on how drivers knowledge can be used to monitor and plan a bus network (11/2025)
 
 - [Dawn transit network analysis](https://lxparapessoas.github.io/rede-madrugada/slides){target="_blank"}, a lecture on scenario analysis of transit data, presented on Rosa Félix course on [Modelling of Transport Systems](https://u-shift.github.io/Traffic-Simulation-Models/){target="_blank"} course of the Master in Transportation Systems at Instituto Superior Técnico (University of Lisbon) (10/2025)
 
