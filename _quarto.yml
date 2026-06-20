@@ -2,6 +2,8 @@ project:
   type: website
   resources:
     - "www/" 
+    - "assets/"
+    - "images/"
 
 website:
   title: "Gonçalo Matos"
@@ -21,7 +23,8 @@ website:
 format:
   html:
     theme:
-      light: cosmo
+      light: 
+      - cosmo
       # cosmo, morph, lux, minty
     css: styles.css
     toc: false

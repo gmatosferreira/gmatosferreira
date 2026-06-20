@@ -2,6 +2,30 @@
 title: "Projects"
 ---
 
+<style>
+#category-pills .category-pill {
+  color: #6c757d;
+  border: solid 1px #dee2e6;
+  border-radius: .25rem;
+  text-transform: uppercase;
+  font-size: .65em;
+  padding-left: .5em;
+  padding-right: .5em;
+  padding-top: .15em;
+  padding-bottom: .15em;
+  cursor: pointer;
+  margin-right: 4px;
+  margin-bottom: 4px;
+  transition: all 0.2s ease-in-out;
+}
+#category-pills .category-pill.active {
+  background-color: #6c757d;
+  color: white;
+  border-color: #6c757d;
+}
+</style>
+<div class="d-flex flex-wrap mb-4" id="category-pills"></div>
+
 <div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
 <div class="list grid quarto-listing-cols-3" id="projects-grid"></div>
 <div class="listing-no-matching d-none">No matching items</div>
@@ -62,11 +86,54 @@ title: "Projects"
       .then(response => response.json())
       .then(items => {
         const grid = document.getElementById('projects-grid');
+        const pillsContainer = document.getElementById('category-pills');
         if (grid) {
+          const allCategories = new Set();
+          items.forEach(item => {
+            if (item.categories) item.categories.forEach(cat => allCategories.add(cat));
+          });
+
+          if (pillsContainer) {
+            let pillsHtml = `<div class="category-pill active" data-category="all">All</div>`;
+            Array.from(allCategories).sort().forEach(cat => {
+              pillsHtml += `<div class="category-pill" data-category="${cat}">${cat}</div>`;
+            });
+            pillsContainer.innerHTML = pillsHtml;
+
+            window.filterProjects = function(category) {
+              document.querySelectorAll('#category-pills .category-pill').forEach(pill => {
+                if (pill.getAttribute('data-category') === category) {
+                  pill.classList.add('active');
+                } else {
+                  pill.classList.remove('active');
+                }
+              });
+
+              const gridItems = grid.querySelectorAll('.g-col-1');
+              gridItems.forEach(item => {
+                if (category === 'all') {
+                  item.style.display = '';
+                } else {
+                  const itemCatsBase64 = item.getAttribute('data-categories');
+                  if (itemCatsBase64) {
+                    const itemCats = decodeURIComponent(atob(itemCatsBase64)).split(',');
+                    item.style.display = itemCats.includes(category) ? '' : 'none';
+                  }
+                }
+              });
+            };
+
+            pillsContainer.addEventListener('click', (e) => {
+              if (e.target.classList.contains('category-pill')) {
+                window.filterProjects(e.target.getAttribute('data-category'));
+              }
+            });
+          }
+
           items.forEach((item, index) => {
             const dataCategories = btoa(encodeURIComponent(item.categories.join(',')));
             const catsHtml = item.categories.map(cat => 
-              `<div class="listing-category" onclick="window.quartoListingCategory('${btoa(encodeURIComponent(cat))}'); return false;">${cat}</div>`
+              `<div class="listing-category" onclick="window.filterProjects('${cat.replace(/'/g, "\\'")}'); event.preventDefault(); event.stopPropagation(); return false;" style="cursor:pointer;">${cat}</div>`
             ).join('\n');
 
             const itemHtml = `
@@ -109,18 +176,7 @@ ${item.author}
       });
     }
 
-    // Script to change elements order (first projects list, then contributions)
-    const listing = document.getElementById("listing-listing");
 
-    const sections = ["civic-engagement-open-data", "publications", "presentations", "posters", "events-organization", "open-source-contributions"];
-
-    if (listing) {
-      const parent = listing.parentNode;
-      sections.forEach(id => {
-        const el = document.getElementById(id);
-        if (el) parent.append(el);
-      });
-    }
   });
 </script>
 
