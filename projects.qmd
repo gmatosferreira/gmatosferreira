@@ -34,9 +34,20 @@ library(jsonlite)
 projects <- tryCatch({
   read_json("www/projects.json")
 }, error = function(e) list())
+civic_pre <- tryCatch({
+  read_json("www/civic-engagement.json")
+}, error = function(e) list())
+opensource_pre <- tryCatch({
+  read_json("www/open-source.json")
+}, error = function(e) list())
 
-all_categories <- unique(unlist(lapply(projects, function(x) x$categories)))
-if (!is.null(all_categories)) {
+proj_cats <- unique(unlist(lapply(projects, function(x) x$categories)))
+civic_cats <- unique(unlist(lapply(civic_pre, function(x) x$keywords)))
+os_cats <- unique(unlist(lapply(opensource_pre, function(x) x$keywords)))
+
+all_categories <- unique(c(proj_cats, civic_cats, os_cats))
+all_categories <- all_categories[all_categories != ""]
+if (length(all_categories) > 0) {
   all_categories <- sort(all_categories)
 }
 
@@ -107,33 +118,130 @@ cat('</div>\n')
 
 # 2. Civic Engagement
 cat('\n# Civic engagement & open data\n\n')
-cat('<ul id="list-civic-engagement">\n')
+cat('<div class="quarto-listing quarto-listing-container-default">\n')
+cat('<div class="list quarto-listing-default">\n')
+
 tryCatch({
   civic <- read_json("www/civic-engagement.json")
-  for (item in civic) {
+  for (i in seq_along(civic)) {
+    item <- civic[[i]]
     url <- if (!is.null(item$url)) item$url else "#"
     title <- if (!is.null(item$title)) item$title else ""
     description <- if (!is.null(item$description)) item$description else ""
     date <- if (!is.null(item$date)) item$date else ""
-    cat(sprintf('<li><a href="%s" target="_blank">%s</a>, %s (%s)</li>\n', url, title, description, date))
+    details <- if (!is.null(item$details)) item$details else ""
+    image <- if (!is.null(item$image)) item$image else ""
+    keywords <- if (!is.null(item$keywords)) item$keywords else list()
+    
+    data_categories_raw <- paste(keywords, collapse=",")
+    data_categories <- jsonlite::base64_enc(URLencode(data_categories_raw, reserved=TRUE))
+    
+    cats_html <- ""
+    for (cat in keywords) {
+      escaped_cat <- gsub("'", "\\\\'", cat)
+      cats_html <- paste0(cats_html, sprintf('<div class="listing-category" onclick="window.filterProjects(\'%s\'); event.preventDefault(); event.stopPropagation(); return false;" style="cursor:pointer;">%s</div>\n', escaped_cat, cat))
+    }
+
+    subtitle <- description
+    if (details != "") subtitle <- paste0(subtitle, sprintf('<br><blockquote style="margin-top: 0.5rem; color: #666; border-left: 3px solid #ccc; padding-left: 1rem;">%s</blockquote>', details))
+    
+    target <- if (url != "#") 'target="_blank"' else ''
+    
+    thumbnail_html <- ""
+    image_class <- ""
+    if (image != "") {
+      image_class <- " image-left"
+      thumbnail_html <- sprintf('\n<div class="thumbnail">\n<a class="no-external" href="%s" %s>\n<p><img loading="lazy" src="%s" class="thumbnail-image"></p>\n</a>\n</div>', url, target, image)
+    }
+    
+    cat(sprintf('
+<div class="quarto-post%s" data-index="%d" data-categories="%s">%s
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a class="no-external" href="%s" %s>%s</a>
+</h3>
+<div class="listing-subtitle">
+%s
+</div>
+<div class="listing-categories">
+%s
+</div>
+</div>
+<div class="metadata">
+<a class="no-external" href="%s" %s>
+<div class="listing-date">
+%s
+</div>
+</a>
+</div>
+</div>\n', image_class, i-1, data_categories, thumbnail_html, url, target, title, subtitle, cats_html, url, target, date))
   }
 }, error = function(e) NULL)
-cat('</ul>\n')
+cat('</div>\n')
+cat('</div>\n')
 
 # 3. Open Source Contributions
 cat('\n# Open source contributions\n\n')
-cat('<ul id="list-open-source">\n')
+cat('<div class="quarto-listing quarto-listing-container-default">\n')
+cat('<div class="list quarto-listing-default">\n')
 tryCatch({
   opensource <- read_json("www/open-source.json")
-  for (item in opensource) {
+  for (i in seq_along(opensource)) {
+    item <- opensource[[i]]
     url <- if (!is.null(item$url)) item$url else "#"
     title <- if (!is.null(item$title)) item$title else ""
     description <- if (!is.null(item$description)) item$description else ""
     date <- if (!is.null(item$date)) item$date else ""
-    cat(sprintf('<li><a href="%s" target="_blank">%s</a>, %s (%s)</li>\n', url, title, description, date))
+    details <- if (!is.null(item$details)) item$details else ""
+    image <- if (!is.null(item$image)) item$image else ""
+    keywords <- if (!is.null(item$keywords)) item$keywords else list()
+    
+    data_categories_raw <- paste(keywords, collapse=",")
+    data_categories <- jsonlite::base64_enc(URLencode(data_categories_raw, reserved=TRUE))
+    
+    cats_html <- ""
+    for (cat in keywords) {
+      escaped_cat <- gsub("'", "\\\\'", cat)
+      cats_html <- paste0(cats_html, sprintf('<div class="listing-category" onclick="window.filterProjects(\'%s\'); event.preventDefault(); event.stopPropagation(); return false;" style="cursor:pointer;">%s</div>\n', escaped_cat, cat))
+    }
+
+    subtitle <- description
+    if (details != "") subtitle <- paste0(subtitle, sprintf('<br><blockquote style="margin-top: 0.5rem; color: #666; border-left: 3px solid #ccc; padding-left: 1rem;">%s</blockquote>', details))
+    
+    target <- if (url != "#") 'target="_blank"' else ''
+    
+    thumbnail_html <- ""
+    image_class <- ""
+    if (image != "") {
+      image_class <- " image-left"
+      thumbnail_html <- sprintf('\n<div class="thumbnail">\n<a class="no-external" href="%s" %s>\n<p><img loading="lazy" src="%s" class="thumbnail-image"></p>\n</a>\n</div>', url, target, image)
+    }
+    
+    cat(sprintf('
+<div class="quarto-post%s" data-index="%d" data-categories="%s">%s
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a class="no-external" href="%s" %s>%s</a>
+</h3>
+<div class="listing-subtitle">
+%s
+</div>
+<div class="listing-categories">
+%s
+</div>
+</div>
+<div class="metadata">
+<a class="no-external" href="%s" %s>
+<div class="listing-date">
+%s
+</div>
+</a>
+</div>
+</div>\n', image_class, i-1, data_categories, thumbnail_html, url, target, title, subtitle, cats_html, url, target, date))
   }
 }, error = function(e) NULL)
-cat('</ul>\n')
+cat('</div>\n')
+cat('</div>\n')
 ```
 
 <script>
@@ -150,7 +258,7 @@ cat('</ul>\n')
         }
       });
 
-      const gridItems = grid.querySelectorAll('.g-col-1');
+      const gridItems = document.querySelectorAll('.g-col-1, .quarto-post');
       gridItems.forEach(item => {
         if (category === 'all') {
           item.style.display = '';
