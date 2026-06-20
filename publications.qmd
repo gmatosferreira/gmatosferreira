@@ -30,13 +30,27 @@ title: "Research & Publications"
 #| output: asis
 library(jsonlite)
 
-# 1. Publications List
+# 0. Filters
 publications <- tryCatch({
   read_json("www/publications.json")
 }, error = function(e) list())
+presentations <- tryCatch({
+  read_json("www/presentations.json")
+}, error = function(e) list())
+posters <- tryCatch({
+  read_json("www/posters.json")
+}, error = function(e) list())
+events <- tryCatch({
+  read_json("www/events.json")
+}, error = function(e) list())
 
-all_categories <- unique(unlist(lapply(publications, function(x) x$keywords)))
-if (!is.null(all_categories)) {
+pub_cats <- unique(unlist(lapply(publications, function(x) x$keywords)))
+pres_cats <- unique(unlist(lapply(presentations, function(x) x$keywords)))
+poster_cats <- unique(unlist(lapply(posters, function(x) x$keywords)))
+event_cats <- unique(unlist(lapply(events, function(x) x$keywords)))
+all_categories <- unique(c(pub_cats, pres_cats, poster_cats, event_cats))
+all_categories <- all_categories[all_categories != ""]
+if (length(all_categories) > 0) {
   all_categories <- sort(all_categories)
 }
 
@@ -49,6 +63,7 @@ if (length(all_categories) > 0) {
 }
 cat('</div>\n')
 
+# 1. Publications List
 cat('<div class="quarto-listing quarto-listing-container-default" id="listing-listing">\n')
 cat('<div class="list quarto-listing-default" id="publications-list">\n')
 
@@ -72,6 +87,7 @@ if (length(publications) > 0) {
     journal <- if (!is.null(item$journal)) item$journal else ""
     date <- if (!is.null(item$date)) item$date else ""
     authors <- if (!is.null(item$authors)) item$authors else ""
+    image <- if (!is.null(item$image)) item$image else ""
     
     target <- if (url != "#") 'target="_blank"' else ''
     linkStartTitle <- if (url != "#") sprintf('<a class="no-external" href="%s" %s>', url, target) else '<span class="no-external" style="color: inherit;">'
@@ -80,8 +96,15 @@ if (length(publications) > 0) {
     linkStartMeta <- if (url != "#") sprintf('<a class="no-external" href="%s" %s>', url, target) else '<div class="no-external">'
     linkEndMeta <- if (url != "#") '</a>' else '</div>'
     
+    thumbnail_html <- ""
+    image_class <- ""
+    if (image != "") {
+      image_class <- " image-left"
+      thumbnail_html <- sprintf('\n<div class="thumbnail">\n<a class="no-external" href="%s" %s>\n<p><img loading="lazy" src="%s" class="thumbnail-image"></p>\n</a>\n</div>', url, target, image)
+    }
+    
     cat(sprintf('
-<div class="quarto-post image-left" data-index="%d" data-categories="%s">
+<div class="quarto-post%s" data-index="%d" data-categories="%s">%s
 <div class="body">
 <h3 class="no-anchor listing-title">
 %s%s%s
@@ -103,7 +126,7 @@ if (length(publications) > 0) {
 </div>
 %s
 </div>
-</div>\n', i-1, data_categories, linkStartTitle, title, linkEndTitle, linkStartTitle, journal, linkEndTitle, cats_html, linkStartMeta, date, authors, linkEndMeta))
+</div>\n', image_class, i-1, data_categories, thumbnail_html, linkStartTitle, title, linkEndTitle, linkStartTitle, journal, linkEndTitle, cats_html, linkStartMeta, date, authors, linkEndMeta))
   }
 }
 
@@ -113,10 +136,11 @@ cat('</div>\n')
 
 # 2. Presentations
 cat('\n# Presentations\n\n')
-cat('<ul id="list-presentations">\n')
+cat('<div class="quarto-listing quarto-listing-container-default">\n')
+cat('<div class="list quarto-listing-default">\n')
 tryCatch({
-  presentations <- read_json("www/presentations.json")
-  for (item in presentations) {
+  for (i in seq_along(presentations)) {
+    item <- presentations[[i]]
     url <- if (!is.null(item$url)) item$url else "#"
     title <- if (!is.null(item$title)) item$title else ""
     type <- if (!is.null(item$type)) item$type else ""
@@ -126,27 +150,74 @@ tryCatch({
     event_url <- if (!is.null(item$event_url)) item$event_url else ""
     context <- if (!is.null(item$context)) item$context else ""
     context_url <- if (!is.null(item$context_url)) item$context_url else ""
+    image <- if (!is.null(item$image)) item$image else ""
+    keywords <- if (!is.null(item$keywords)) item$keywords else list()
     
-    html <- sprintf('<a href="%s" target="_blank">%s</a>, a %s %s', url, title, type, description)
+    data_categories <- ""
+    cats_html <- ""
+    all_item_cats <- list()
+    if (type != "") all_item_cats <- c(all_item_cats, type)
+    if (length(keywords) > 0) all_item_cats <- c(all_item_cats, unlist(keywords))
+    
+    if (length(all_item_cats) > 0) {
+      data_categories_raw <- paste(all_item_cats, collapse=",")
+      data_categories <- jsonlite::base64_enc(URLencode(data_categories_raw, reserved=TRUE))
+      for (cat in all_item_cats) {
+        escaped_cat <- gsub("'", "\\\\'", cat)
+        cats_html <- paste0(cats_html, sprintf('<div class="listing-category" onclick="window.filterPublications(\'%s\'); event.preventDefault(); event.stopPropagation(); return false;" style="cursor:pointer;">%s</div>\n', escaped_cat, cat))
+      }
+    }
+
+    subtitle <- sprintf('a %s %s', type, description)
     if (event != "") {
-      html <- paste0(html, if (event_url != "") sprintf(', presented at <a href="%s" target="_blank">%s</a>', event_url, event) else sprintf(', presented at %s', event))
+      subtitle <- paste0(subtitle, if (event_url != "") sprintf(', presented at <a href="%s" target="_blank">%s</a>', event_url, event) else sprintf(', presented at %s', event))
     }
     if (context != "") {
-      html <- paste0(html, if (context_url != "") sprintf(', <a href="%s" target="_blank">%s</a>', context_url, context) else sprintf(', %s', context))
+      subtitle <- paste0(subtitle, if (context_url != "") sprintf(', <a href="%s" target="_blank">%s</a>', context_url, context) else sprintf(', %s', context))
     }
-    html <- paste0(html, sprintf(' (%s)', date))
     
-    cat(sprintf('<li>%s</li>\n', html))
+    target <- if (url != "#") 'target="_blank"' else ''
+    
+    thumbnail_html <- ""
+    image_class <- ""
+    if (image != "") {
+      image_class <- " image-left"
+      thumbnail_html <- sprintf('\n<div class="thumbnail">\n<a class="no-external" href="%s" %s>\n<p><img loading="lazy" src="%s" class="thumbnail-image"></p>\n</a>\n</div>', url, target, image)
+    }
+    
+    cat(sprintf('
+<div class="quarto-post%s" data-index="%d" data-categories="%s">%s
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a class="no-external" href="%s" %s>%s</a>
+</h3>
+<div class="listing-subtitle">
+%s
+</div>
+<div class="listing-categories">
+%s
+</div>
+</div>
+<div class="metadata">
+<a class="no-external" href="%s" %s>
+<div class="listing-date">
+%s
+</div>
+</a>
+</div>
+</div>\n', image_class, i-1, data_categories, thumbnail_html, url, target, title, subtitle, cats_html, url, target, date))
   }
 }, error = function(e) NULL)
-cat('</ul>\n')
+cat('</div>\n')
+cat('</div>\n')
 
 # 3. Posters
 cat('\n# Posters\n\n')
-cat('<ul id="list-posters">\n')
+cat('<div class="quarto-listing quarto-listing-container-default">\n')
+cat('<div class="list quarto-listing-default">\n')
 tryCatch({
-  posters <- read_json("www/posters.json")
-  for (item in posters) {
+  for (i in seq_along(posters)) {
+    item <- posters[[i]]
     url <- if (!is.null(item$url)) item$url else "#"
     title <- if (!is.null(item$title)) item$title else ""
     type <- if (!is.null(item$type)) item$type else ""
@@ -154,32 +225,113 @@ tryCatch({
     date <- if (!is.null(item$date)) item$date else ""
     event <- if (!is.null(item$event)) item$event else ""
     event_url <- if (!is.null(item$event_url)) item$event_url else ""
+    image <- if (!is.null(item$image)) item$image else ""
     
-    cat(sprintf('<li><a href="%s" target="_blank">%s</a>, a %s %s, presented at <a href="%s" target="_blank">%s</a> (%s)</li>\n', url, title, type, description, event_url, event, date))
+    subtitle <- sprintf('a %s %s', type, description)
+    if (event != "") {
+      subtitle <- paste0(subtitle, if (event_url != "") sprintf(', presented at <a href="%s" target="_blank">%s</a>', event_url, event) else sprintf(', presented at %s', event))
+    }
+    
+    target <- if (url != "#") 'target="_blank"' else ''
+    
+    thumbnail_html <- ""
+    image_class <- ""
+    if (image != "") {
+      image_class <- " image-left"
+      thumbnail_html <- sprintf('\n<div class="thumbnail">\n<a class="no-external" href="%s" %s>\n<p><img loading="lazy" src="%s" class="thumbnail-image"></p>\n</a>\n</div>', url, target, image)
+    }
+
+    keywords <- item$keywords
+    if (is.null(keywords)) keywords <- list()
+    
+    data_categories_raw <- paste(keywords, collapse=",")
+    data_categories <- jsonlite::base64_enc(URLencode(data_categories_raw, reserved=TRUE))
+    
+    cats_html <- ""
+    for (cat in keywords) {
+      escaped_cat <- gsub("'", "\\\\'", cat)
+      cats_html <- paste0(cats_html, sprintf('<div class="listing-category" onclick="window.filterPublications(\'%s\'); event.preventDefault(); event.stopPropagation(); return false;" style="cursor:pointer;">%s</div>\n', escaped_cat, cat))
+    }
+    
+    cat(sprintf('
+<div class="quarto-post%s" data-index="%d" data-categories="%s">%s
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a class="no-external" href="%s" %s>%s</a>
+</h3>
+<div class="listing-subtitle">
+%s
+</div>
+<div class="listing-categories">
+%s
+</div>
+</div>
+<div class="metadata">
+<a class="no-external" href="%s" %s>
+<div class="listing-date">
+%s
+</div>
+</a>
+</div>
+</div>\n', image_class, i-1, data_categories, thumbnail_html, url, target, title, subtitle, cats_html, url, target, date))
   }
 }, error = function(e) NULL)
-cat('</ul>\n')
+cat('</div>\n')
+cat('</div>\n')
 
 # 4. Events
 cat('\n# Events organization\n\n')
-cat('<ul id="list-events">\n')
+cat('<div class="quarto-listing quarto-listing-container-default">\n')
+cat('<div class="list quarto-listing-default">\n')
 tryCatch({
-  events <- read_json("www/events.json")
-  for (item in events) {
+  for (i in seq_along(events)) {
+    item <- events[[i]]
     url <- if (!is.null(item$url)) item$url else "#"
     title <- if (!is.null(item$title)) item$title else ""
     description <- if (!is.null(item$description)) item$description else ""
     date <- if (!is.null(item$date)) item$date else ""
     details <- if (!is.null(item$details)) item$details else ""
+    image <- if (!is.null(item$image)) item$image else ""
+    keywords <- item$keywords
+    if (is.null(keywords)) keywords <- list()
     
-    html <- sprintf('<a href="%s" target="_blank">%s</a>, %s', url, title, description)
-    if (date != "") html <- paste0(html, sprintf(' (%s)', date))
-    if (details != "") html <- paste0(html, sprintf('<br><blockquote style="margin-top: 0.5rem; color: #666; border-left: 3px solid #ccc; padding-left: 1rem;">%s</blockquote>', details))
+    data_categories_raw <- paste(keywords, collapse=",")
+    data_categories <- jsonlite::base64_enc(URLencode(data_categories_raw, reserved=TRUE))
     
-    cat(sprintf('<li>%s</li>\n', html))
+    subtitle <- description
+    if (details != "") subtitle <- details
+    
+    target <- if (url != "#") 'target="_blank"' else ''
+    
+    thumbnail_html <- ""
+    image_class <- ""
+    if (image != "") {
+      image_class <- " image-left"
+      thumbnail_html <- sprintf('\n<div class="thumbnail">\n<a class="no-external" href="%s" %s>\n<p><img loading="lazy" src="%s" class="thumbnail-image"></p>\n</a>\n</div>', url, target, image)
+    }
+    
+    cat(sprintf('
+<div class="quarto-post%s" data-index="%d" data-categories="%s">%s
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a class="no-external" href="%s" %s>%s</a>
+</b></h3>
+<div class="listing-subtitle">
+%s
+</div>
+</div>
+<div class="metadata">
+<a class="no-external" href="%s" %s>
+<div class="listing-date">
+%s
+</div>
+</a>
+</div>
+</div>\n', image_class, i-1, data_categories, thumbnail_html, url, target, title, subtitle, url, target, date))
   }
 }, error = function(e) NULL)
-cat('</ul>\n')
+cat('</div>\n')
+cat('</div>\n')
 ```
 
 <script>
@@ -196,7 +348,7 @@ cat('</ul>\n')
         }
       });
 
-      const listItems = list.querySelectorAll('.quarto-post');
+      const listItems = document.querySelectorAll('.quarto-post');
       listItems.forEach(item => {
         if (category === 'all') {
           item.style.display = '';
