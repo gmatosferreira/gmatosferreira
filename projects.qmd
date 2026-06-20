@@ -1,5 +1,5 @@
 ---
-title: "Projects"
+title: "Projects & Code"
 ---
 
 <style>
@@ -37,32 +37,12 @@ title: "Projects"
     const renderers = {
       'list-publications': (item) => `${item.authors} <strong>${item.title}</strong>. <em>${item.status}</em>`,
       'list-civic-engagement': (item) => `<a href="${item.url}" target="_blank">${item.title}</a>, ${item.description} (${item.date})`,
-      'list-presentations': (item) => {
-        let html = `<a href="${item.url}" target="_blank">${item.title}</a>, a ${item.type} ${item.description}`;
-        if (item.event) {
-          html += item.event_url ? `, presented at <a href="${item.event_url}" target="_blank">${item.event}</a>` : `, presented at ${item.event}`;
-        }
-        if (item.context) {
-          html += item.context_url ? `, <a href="${item.context_url}" target="_blank">${item.context}</a>` : `, ${item.context}`;
-        }
-        return html + ` (${item.date})`;
-      },
-      'list-posters': (item) => `<a href="${item.url}" target="_blank">${item.title}</a>, a ${item.type} ${item.description}, presented at <a href="${item.event_url}" target="_blank">${item.event}</a> (${item.date})`,
-      'list-events': (item) => {
-        let html = `<a href="${item.url}" target="_blank">${item.title}</a>, ${item.description}`;
-        if (item.date) html += ` (${item.date})`;
-        if (item.details) html += `<br><blockquote style="margin-top: 0.5rem; color: #666; border-left: 3px solid #ccc; padding-left: 1rem;">${item.details}</blockquote>`;
-        return html;
-      },
       'list-open-source': (item) => `<a href="${item.url}" target="_blank">${item.title}</a>, ${item.description} (${item.date})`
     };
 
     const dataSources = [
       { id: 'list-publications', file: 'www/publications.json' },
       { id: 'list-civic-engagement', file: 'www/civic-engagement.json' },
-      { id: 'list-presentations', file: 'www/presentations.json' },
-      { id: 'list-posters', file: 'www/posters.json' },
-      { id: 'list-events', file: 'www/events.json' },
       { id: 'list-open-source', file: 'www/open-source.json' }
     ];
 
@@ -181,31 +161,11 @@ ${item.author}
 </script>
 
 
-# Publications
-
-<ul id="list-publications"></ul>
-
-
 # Civic engagement & open data
 
 <ul id="list-civic-engagement"></ul>
 
-
-# Presentations
-
-<ul id="list-presentations"></ul>
-
-
-# Posters
-
-<ul id="list-posters"></ul>
-
-
-# Events organization
-
-<ul id="list-events"></ul>
-
-
 # Open source contributions
 
 <ul id="list-open-source"></ul>
+

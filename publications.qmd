@@ -1,0 +1,190 @@
+---
+title: "Research & Publications"
+---
+
+<style>
+#category-pills .category-pill {
+  color: #6c757d;
+  border: solid 1px #dee2e6;
+  border-radius: .25rem;
+  text-transform: uppercase;
+  font-size: .65em;
+  padding-left: .5em;
+  padding-right: .5em;
+  padding-top: .15em;
+  padding-bottom: .15em;
+  cursor: pointer;
+  margin-right: 4px;
+  margin-bottom: 4px;
+  transition: all 0.2s ease-in-out;
+}
+#category-pills .category-pill.active {
+  background-color: var(--bs-primary);
+  color: white;
+  border-color: var(--bs-primary);
+}
+</style>
+<div class="d-flex flex-wrap mb-4" id="category-pills"></div>
+
+<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
+<div class="list quarto-listing-default" id="publications-list"></div>
+<div class="listing-no-matching d-none">No matching items</div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    fetch('www/publications.json')
+      .then(response => response.json())
+      .then(items => {
+        const list = document.getElementById('publications-list');
+        const pillsContainer = document.getElementById('category-pills');
+        if (list) {
+          const allCategories = new Set();
+          items.forEach(item => {
+            if (item.keywords) item.keywords.forEach(cat => allCategories.add(cat));
+          });
+
+          if (pillsContainer) {
+            let pillsHtml = `<div class="category-pill active" data-category="all">All</div>`;
+            Array.from(allCategories).sort().forEach(cat => {
+              pillsHtml += `<div class="category-pill" data-category="${cat}">${cat}</div>`;
+            });
+            pillsContainer.innerHTML = pillsHtml;
+
+            window.filterPublications = function(category) {
+              document.querySelectorAll('#category-pills .category-pill').forEach(pill => {
+                if (pill.getAttribute('data-category') === category) {
+                  pill.classList.add('active');
+                } else {
+                  pill.classList.remove('active');
+                }
+              });
+
+              const listItems = list.querySelectorAll('.quarto-post');
+              listItems.forEach(item => {
+                if (category === 'all') {
+                  item.style.display = '';
+                } else {
+                  const itemCatsBase64 = item.getAttribute('data-categories');
+                  if (itemCatsBase64) {
+                    const itemCats = decodeURIComponent(atob(itemCatsBase64)).split(',');
+                    item.style.display = itemCats.includes(category) ? '' : 'none';
+                  } else {
+                    item.style.display = 'none';
+                  }
+                }
+              });
+            };
+
+            pillsContainer.addEventListener('click', (e) => {
+              if (e.target.classList.contains('category-pill')) {
+                window.filterPublications(e.target.getAttribute('data-category'));
+              }
+            });
+          }
+
+          items.forEach((item, index) => {
+            const keywords = item.keywords || [];
+            const dataCategories = btoa(encodeURIComponent(keywords.join(',')));
+            const catsHtml = keywords.map(cat => 
+              `<div class="listing-category" onclick="window.filterPublications('${cat.replace(/'/g, "\\'")}'); event.preventDefault(); event.stopPropagation(); return false;" style="cursor:pointer;">${cat}</div>`
+            ).join('\n');
+
+            const url = item.url || '#';
+            const target = item.url ? 'target="_blank"' : '';
+            const linkStartTitle = item.url ? `<a class="no-external" href="${url}" ${target}>` : `<span class="no-external" style="color: inherit;">`;
+            const linkEndTitle = item.url ? `</a>` : `</span>`;
+            
+            const linkStartMeta = item.url ? `<a class="no-external" href="${url}" ${target}>` : `<div class="no-external">`;
+            const linkEndMeta = item.url ? `</a>` : `</div>`;
+
+            const itemHtml = `
+<div class="quarto-post image-left" data-index="${index}" data-categories="${dataCategories}">
+<div class="body">
+<h3 class="no-anchor listing-title">
+${linkStartTitle}${item.title}${linkEndTitle}
+</h3>
+<div class="listing-subtitle">
+${linkStartTitle}${item.journal}${linkEndTitle}
+</div>
+<div class="listing-categories">
+${catsHtml}
+</div>
+</div>
+<div class="metadata">
+${linkStartMeta}
+<div class="listing-date">
+${item.date}
+</div>
+<div class="listing-author">
+${item.authors}
+</div>
+${linkEndMeta}
+</div>
+</div>`;
+            list.insertAdjacentHTML('beforeend', itemHtml);
+          });
+        }
+      })
+      .catch(err => console.error('Error loading publications.json', err));
+
+    const renderers = {
+      'list-presentations': (item) => {
+        let html = `<a href="${item.url}" target="_blank">${item.title}</a>, a ${item.type} ${item.description}`;
+        if (item.event) {
+          html += item.event_url ? `, presented at <a href="${item.event_url}" target="_blank">${item.event}</a>` : `, presented at ${item.event}`;
+        }
+        if (item.context) {
+          html += item.context_url ? `, <a href="${item.context_url}" target="_blank">${item.context}</a>` : `, ${item.context}`;
+        }
+        return html + ` (${item.date})`;
+      },
+      'list-posters': (item) => `<a href="${item.url}" target="_blank">${item.title}</a>, a ${item.type} ${item.description}, presented at <a href="${item.event_url}" target="_blank">${item.event}</a> (${item.date})`,
+      'list-events': (item) => {
+        let html = `<a href="${item.url}" target="_blank">${item.title}</a>, ${item.description}`;
+        if (item.date) html += ` (${item.date})`;
+        if (item.details) html += `<br><blockquote style="margin-top: 0.5rem; color: #666; border-left: 3px solid #ccc; padding-left: 1rem;">${item.details}</blockquote>`;
+        return html;
+      }
+    };
+
+    const dataSources = [
+      { id: 'list-presentations', file: 'www/presentations.json' },
+      { id: 'list-posters', file: 'www/posters.json' },
+      { id: 'list-events', file: 'www/events.json' }
+    ];
+
+    dataSources.forEach(source => {
+      fetch(source.file)
+        .then(response => response.json())
+        .then(items => {
+          const ul = document.getElementById(source.id);
+          if (ul) {
+            items.forEach(item => {
+              const li = document.createElement('li');
+              li.innerHTML = renderers[source.id] ? renderers[source.id](item) : '';
+              ul.appendChild(li);
+            });
+          }
+        })
+        .catch(err => console.error('Error loading ' + source.file, err));
+    });
+  });
+</script>
+
+
+# Presentations
+
+<ul id="list-presentations"></ul>
+
+
+# Posters
+
+<ul id="list-posters"></ul>
+
+
+# Events organization
+
+<ul id="list-events"></ul>
+
+

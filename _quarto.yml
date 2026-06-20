@@ -13,6 +13,7 @@ website:
       - href: index.qmd
         text: Home
       - projects.qmd
+      - publications.qmd
       - contacts.qmd
   page-footer: 
     left: "Developed with Quarto open-source publishing tool" 

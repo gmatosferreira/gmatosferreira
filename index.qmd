@@ -33,6 +33,6 @@ format:
 
 I am a programmer who is interested in writing (not only code), mobility and equality. 
 
-I just finished my master's degree in Transportation Systems at Instituto Superior Técnico (University of Lisbon), where I keep exploring the transportation world, assisting U-Shift urban mobility lab on their research projects.
+I have a master's degree in Transportation Systems at Instituto Superior Técnico (University of Lisbon), where I continue to explore the transportation world, assisting U-Shift urban mobility lab on their research projects.
 
 # 💻🛤️🌍
