@@ -1,10 +1,11 @@
 ---
 title: "Projects"
-listing:
-  type: grid
-  categories: true
-  contents: "projects.yml"
 ---
+
+<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
+<div class="list grid quarto-listing-cols-3" id="projects-grid"></div>
+<div class="listing-no-matching d-none">No matching items</div>
+</div>
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
@@ -56,6 +57,48 @@ listing:
         })
         .catch(err => console.error('Error loading ' + source.file, err));
     });
+
+    fetch('www/projects.json')
+      .then(response => response.json())
+      .then(items => {
+        const grid = document.getElementById('projects-grid');
+        if (grid) {
+          items.forEach((item, index) => {
+            const dataCategories = btoa(encodeURIComponent(item.categories.join(',')));
+            const catsHtml = item.categories.map(cat => 
+              `<div class="listing-category" onclick="window.quartoListingCategory('${btoa(encodeURIComponent(cat))}'); return false;">${cat}</div>`
+            ).join('\n');
+
+            const itemHtml = `
+<div class="g-col-1" data-index="${index}" data-categories="${dataCategories}" data-listing-date-sort="null" data-listing-file-modified-sort="null">
+<a href="${item.path}" class="quarto-grid-link" target="_blank">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="${item.image}" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+${item.title}
+</h5>
+<div class="listing-categories">
+${catsHtml}
+</div>
+<div class="card-text listing-description delink">
+<p>${item.description}</p>
+</div>
+<div class="card-attribution card-text-small start">
+<div class="listing-author">
+${item.author}
+</div>
+</div>
+</div>
+</div></a>
+</div>`;
+            grid.insertAdjacentHTML('beforeend', itemHtml);
+          });
+        }
+      })
+      .catch(err => console.error('Error loading projects.json', err));
 
     // Script to override listing hyperlinks behaviour, forcing to open them on new tab
     const container = document.querySelector('#listing-listing');
