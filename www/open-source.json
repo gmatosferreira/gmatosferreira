@@ -1,0 +1,14 @@
+[
+  {
+    "title": "gtfsrouter",
+    "url": "https://github.com/UrbanAnalyst/gtfsrouter/releases/tag/v0.1.4",
+    "description": "an R package to route and analyse GTFS data",
+    "date": "06/2025"
+  },
+  {
+    "title": "osmactive",
+    "url": "https://github.com/nptscot/osmactive/pull/36",
+    "description": "an R package to extract active travel infrastructure from OpenStreetMap data",
+    "date": "03/2025"
+  }
+]
