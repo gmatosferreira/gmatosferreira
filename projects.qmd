@@ -24,148 +24,152 @@ title: "Projects & Code"
   border-color: #6c757d;
 }
 </style>
-<div class="d-flex flex-wrap mb-4" id="category-pills"></div>
 
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
-<div class="list grid quarto-listing-cols-3" id="projects-grid"></div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div>
+```{r}
+#| echo: false
+#| output: asis
+library(jsonlite)
 
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    // Fetch JSON data for sections
-    const renderers = {
-      'list-publications': (item) => `${item.authors} <strong>${item.title}</strong>. <em>${item.status}</em>`,
-      'list-civic-engagement': (item) => `<a href="${item.url}" target="_blank">${item.title}</a>, ${item.description} (${item.date})`,
-      'list-open-source': (item) => `<a href="${item.url}" target="_blank">${item.title}</a>, ${item.description} (${item.date})`
-    };
+# 1. Projects Grid
+projects <- tryCatch({
+  read_json("www/projects.json")
+}, error = function(e) list())
 
-    const dataSources = [
-      { id: 'list-publications', file: 'www/publications.json' },
-      { id: 'list-civic-engagement', file: 'www/civic-engagement.json' },
-      { id: 'list-open-source', file: 'www/open-source.json' }
-    ];
+all_categories <- unique(unlist(lapply(projects, function(x) x$categories)))
+if (!is.null(all_categories)) {
+  all_categories <- sort(all_categories)
+}
 
-    dataSources.forEach(source => {
-      fetch(source.file)
-        .then(response => response.json())
-        .then(items => {
-          const ul = document.getElementById(source.id);
-          if (ul) {
-            items.forEach(item => {
-              const li = document.createElement('li');
-              li.innerHTML = renderers[source.id] ? renderers[source.id](item) : '';
-              ul.appendChild(li);
-            });
-          }
-        })
-        .catch(err => console.error('Error loading ' + source.file, err));
-    });
+cat('<div class="d-flex flex-wrap mb-4" id="category-pills">\n')
+cat('<div class="category-pill active" data-category="all">All</div>\n')
+if (length(all_categories) > 0) {
+  for (cat in all_categories) {
+    cat(sprintf('<div class="category-pill" data-category="%s">%s</div>\n', cat, cat))
+  }
+}
+cat('</div>\n')
 
-    fetch('www/projects.json')
-      .then(response => response.json())
-      .then(items => {
-        const grid = document.getElementById('projects-grid');
-        const pillsContainer = document.getElementById('category-pills');
-        if (grid) {
-          const allCategories = new Set();
-          items.forEach(item => {
-            if (item.categories) item.categories.forEach(cat => allCategories.add(cat));
-          });
+cat('<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">\n')
+cat('<div class="list grid quarto-listing-cols-3" id="projects-grid">\n')
 
-          if (pillsContainer) {
-            let pillsHtml = `<div class="category-pill active" data-category="all">All</div>`;
-            Array.from(allCategories).sort().forEach(cat => {
-              pillsHtml += `<div class="category-pill" data-category="${cat}">${cat}</div>`;
-            });
-            pillsContainer.innerHTML = pillsHtml;
-
-            window.filterProjects = function(category) {
-              document.querySelectorAll('#category-pills .category-pill').forEach(pill => {
-                if (pill.getAttribute('data-category') === category) {
-                  pill.classList.add('active');
-                } else {
-                  pill.classList.remove('active');
-                }
-              });
-
-              const gridItems = grid.querySelectorAll('.g-col-1');
-              gridItems.forEach(item => {
-                if (category === 'all') {
-                  item.style.display = '';
-                } else {
-                  const itemCatsBase64 = item.getAttribute('data-categories');
-                  if (itemCatsBase64) {
-                    const itemCats = decodeURIComponent(atob(itemCatsBase64)).split(',');
-                    item.style.display = itemCats.includes(category) ? '' : 'none';
-                  }
-                }
-              });
-            };
-
-            pillsContainer.addEventListener('click', (e) => {
-              if (e.target.classList.contains('category-pill')) {
-                window.filterProjects(e.target.getAttribute('data-category'));
-              }
-            });
-          }
-
-          items.forEach((item, index) => {
-            const dataCategories = btoa(encodeURIComponent(item.categories.join(',')));
-            const catsHtml = item.categories.map(cat => 
-              `<div class="listing-category" onclick="window.filterProjects('${cat.replace(/'/g, "\\'")}'); event.preventDefault(); event.stopPropagation(); return false;" style="cursor:pointer;">${cat}</div>`
-            ).join('\n');
-
-            const itemHtml = `
-<div class="g-col-1" data-index="${index}" data-categories="${dataCategories}" data-listing-date-sort="null" data-listing-file-modified-sort="null">
-<a href="${item.path}" class="quarto-grid-link" target="_blank">
+if (length(projects) > 0) {
+  for (i in seq_along(projects)) {
+    item <- projects[[i]]
+    categories <- item$categories
+    if (is.null(categories)) categories <- list()
+    
+    data_categories_raw <- paste(categories, collapse=",")
+    data_categories <- jsonlite::base64_enc(URLencode(data_categories_raw, reserved=TRUE))
+    
+    cats_html <- ""
+    for (cat in categories) {
+      escaped_cat <- gsub("'", "\\\\'", cat)
+      cats_html <- paste0(cats_html, sprintf('<div class="listing-category" onclick="window.filterProjects(\'%s\'); event.preventDefault(); event.stopPropagation(); return false;" style="cursor:pointer;">%s</div>\n', escaped_cat, cat))
+    }
+    
+    path <- if (!is.null(item$path)) item$path else "#"
+    image <- if (!is.null(item$image)) item$image else ""
+    title <- if (!is.null(item$title)) item$title else ""
+    description <- if (!is.null(item$description)) item$description else ""
+    author <- if (!is.null(item$author)) item$author else ""
+    
+    cat(sprintf('
+<div class="g-col-1" data-index="%d" data-categories="%s" data-listing-date-sort="null" data-listing-file-modified-sort="null">
+<a href="%s" class="quarto-grid-link" target="_blank">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img loading="lazy" src="${item.image}" class="thumbnail-image card-img" style="height: 150px;">
+<img loading="lazy" src="%s" class="thumbnail-image card-img" style="height: 150px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
-${item.title}
+%s
 </h5>
 <div class="listing-categories">
-${catsHtml}
+%s
 </div>
 <div class="card-text listing-description delink">
-<p>${item.description}</p>
+<p>%s</p>
 </div>
 <div class="card-attribution card-text-small start">
 <div class="listing-author">
-${item.author}
+%s
 </div>
 </div>
 </div>
 </div></a>
-</div>`;
-            grid.insertAdjacentHTML('beforeend', itemHtml);
-          });
-        }
-      })
-      .catch(err => console.error('Error loading projects.json', err));
+</div>\n', i-1, data_categories, path, image, title, cats_html, description, author))
+  }
+}
 
-    // Script to override listing hyperlinks behaviour, forcing to open them on new tab
-    const container = document.querySelector('#listing-listing');
-    if (container) {
-      const links = container.querySelectorAll('a');
-      links.forEach(link => {
-        link.setAttribute('target', '_blank');
+cat('</div>\n')
+cat('<div class="listing-no-matching d-none">No matching items</div>\n')
+cat('</div>\n')
+
+# 2. Civic Engagement
+cat('\n# Civic engagement & open data\n\n')
+cat('<ul id="list-civic-engagement">\n')
+tryCatch({
+  civic <- read_json("www/civic-engagement.json")
+  for (item in civic) {
+    url <- if (!is.null(item$url)) item$url else "#"
+    title <- if (!is.null(item$title)) item$title else ""
+    description <- if (!is.null(item$description)) item$description else ""
+    date <- if (!is.null(item$date)) item$date else ""
+    cat(sprintf('<li><a href="%s" target="_blank">%s</a>, %s (%s)</li>\n', url, title, description, date))
+  }
+}, error = function(e) NULL)
+cat('</ul>\n')
+
+# 3. Open Source Contributions
+cat('\n# Open source contributions\n\n')
+cat('<ul id="list-open-source">\n')
+tryCatch({
+  opensource <- read_json("www/open-source.json")
+  for (item in opensource) {
+    url <- if (!is.null(item$url)) item$url else "#"
+    title <- if (!is.null(item$title)) item$title else ""
+    description <- if (!is.null(item$description)) item$description else ""
+    date <- if (!is.null(item$date)) item$date else ""
+    cat(sprintf('<li><a href="%s" target="_blank">%s</a>, %s (%s)</li>\n', url, title, description, date))
+  }
+}, error = function(e) NULL)
+cat('</ul>\n')
+```
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const grid = document.getElementById('projects-grid');
+    const pillsContainer = document.getElementById('category-pills');
+
+    window.filterProjects = function(category) {
+      document.querySelectorAll('#category-pills .category-pill').forEach(pill => {
+        if (pill.getAttribute('data-category') === category) {
+          pill.classList.add('active');
+        } else {
+          pill.classList.remove('active');
+        }
+      });
+
+      const gridItems = grid.querySelectorAll('.g-col-1');
+      gridItems.forEach(item => {
+        if (category === 'all') {
+          item.style.display = '';
+        } else {
+          const itemCatsBase64 = item.getAttribute('data-categories');
+          if (itemCatsBase64) {
+            const itemCats = decodeURIComponent(atob(itemCatsBase64)).split(',');
+            item.style.display = itemCats.includes(category) ? '' : 'none';
+          }
+        }
+      });
+    };
+
+    if (pillsContainer) {
+      pillsContainer.addEventListener('click', (e) => {
+        if (e.target.classList.contains('category-pill')) {
+          window.filterProjects(e.target.getAttribute('data-category'));
+        }
       });
     }
-
-
   });
 </script>
-
-
-# Civic engagement & open data
-
-<ul id="list-civic-engagement"></ul>
-
-# Open source contributions
-
-<ul id="list-open-source"></ul>
-
