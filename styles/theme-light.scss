@@ -340,6 +340,14 @@ section#posters .quarto-post .thumbnail-image {
   border-radius: 4px 4px 0 0;
 }
 
+.quarto-grid-item .card-attribution {
+  padding: 0;
+}
+
+.card-text p:last-of-type {
+  margin-bottom: 0;
+}
+
 // Typography scale used by the Silvia theme for title blocks
 .title {
   font-size: 2.5em;
