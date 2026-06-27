@@ -2,29 +2,6 @@
 title: "Projects & Code"
 ---
 
-<style>
-#category-pills .category-pill {
-  color: #6c757d;
-  border: solid 1px #dee2e6;
-  border-radius: .25rem;
-  text-transform: uppercase;
-  font-size: .65em;
-  padding-left: .5em;
-  padding-right: .5em;
-  padding-top: .15em;
-  padding-bottom: .15em;
-  cursor: pointer;
-  margin-right: 4px;
-  margin-bottom: 4px;
-  transition: all 0.2s ease-in-out;
-}
-#category-pills .category-pill.active {
-  background-color: #6c757d;
-  color: white;
-  border-color: #6c757d;
-}
-</style>
-
 ```{r}
 #| echo: false
 #| output: asis

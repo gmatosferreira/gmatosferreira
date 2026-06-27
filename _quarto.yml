@@ -23,10 +23,14 @@ website:
 
 format:
   html:
+    grid:
+      body-width: 1180px
+      margin-width: 120px
+      sidebar-width: 240px
+      gutter-width: 1.5rem
     theme:
       light: 
-      - cosmo
-      # cosmo, morph, lux, minty
+      - styles/theme-light.scss
     css: styles.css
     toc: false
 

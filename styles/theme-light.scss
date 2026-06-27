@@ -1,0 +1,366 @@
+/* Addapted from https://github.com/spcanelon/silvia/blob/main/assets/silvia-theme-light.scss */
+
+@import url("https://fonts.googleapis.com/css2?family=Petrona:wght@400;500&family=Red+Hat+Text:ital,wght@0,400;0,500;1,400&display=swap");
+
+/*-- scss:defaults --*/
+
+// Custom palette tokens from silviacanelon.com
+$spc-bg-0: #fffbf2;
+$spc-bg-1: #faf0e3;
+$spc-primary: #002642;
+$spc-primary-light: #2e4963;
+$spc-secondary: #a23e02;
+$spc-secondary-light: #d96e34;
+$spc-accent: #b9c680;
+$spc-accent-light: #eef1e0;
+$spc-accent-dark: #697935;
+
+// Colors: Quarto variables
+$primary: $spc-primary-light;
+$secondary: $spc-secondary;
+
+// Colors: custom variables
+$primary-dark: $spc-primary;
+$secondary-light: $spc-secondary-light;
+$accent: $spc-accent;
+$accent-light: $spc-accent-light;
+$accent-dark: $spc-accent-dark;
+
+// Body
+$body-color: $primary-dark;
+$body-bg: $spc-bg-0;
+$body-secondary: #6c757d;
+
+// Fonts
+$font-family-sans-serif: "Red Hat Text", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+$headings-font-weight: 400;
+$headings-font-family: "Petrona";
+$font-family-monospace: "Dank Mono", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+// Links
+$link-color: $secondary;
+$link-decoration: underline;
+$link-hover-color: $secondary-light;
+$link-hover-decoration: none;
+
+// Tables
+$table-border-color: $primary;
+$table-group-separator-color: lighten($primary, 25%);
+$table-caption-color: $body-secondary;
+
+// Code blocks
+$code-block-bg: white;
+$code-block-border: #ebebeb;
+
+// Inline code
+$code-color: $primary-dark;
+$code-bg: $accent-light;
+
+// Table of contents
+$toc-color: $link-color;
+$toc-active-border: $toc-color;
+$toc-inactive-border: lighten($toc-color, 50%);
+
+// Navbar icons
+$navbar-fg: $secondary;
+
+// Footer text
+$footer-fg: $primary;
+
+// Miscellaneous (workarounds)
+$gray-200: lighten($primary, 60%);
+
+/*-- scss:rules --*/
+
+:root {
+  --spc-bg-0: #fffbf2;
+  --spc-bg-1: #faf0e3;
+  --spc-primary: #002642;
+  --spc-primary-light: #2e4963;
+  --spc-secondary: #a23e02;
+  --spc-secondary-light: #d96e34;
+  --spc-accent: #b9c680;
+  --spc-accent-light: #eef1e0;
+  --spc-accent-dark: #697935;
+}
+
+body {
+  background-color: $spc-bg-0;
+  color: $primary-dark;
+}
+
+// Use a wider page container, closer to Silvia's layout.
+#quarto-content.quarto-container {
+  max-width: min(1320px, 95vw) !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#quarto-content.quarto-container.page-layout-article > main.content,
+#quarto-content.quarto-container.page-layout-full > main.content,
+#quarto-content.quarto-container.page-layout-custom > main.content {
+  max-width: 100% !important;
+}
+
+@media (max-width: 991.98px) {
+  #quarto-content.quarto-container {
+    max-width: 96vw !important;
+  }
+}
+
+// Code block
+
+div.sourceCode {
+  background-color: $code-block-bg;
+  border: 1px solid $code-block-border;
+}
+
+// Inline code
+p code:not(.sourceCode), li code:not(.sourceCode), td code:not(.sourceCode) {
+  border: 1px solid $accent;
+}
+
+// Code with filename
+.code-with-filename .code-with-filename-file {
+  color: $code-color;
+  background-color: $code-bg;
+  border: 1px solid $code-block-border;
+  border-bottom: none;
+
+  pre {
+    background-color: $code-bg;
+  }
+}
+
+.blockquote {
+  color: lighten($primary, 15%);
+  font-style: oblique;
+}
+
+// Navbar
+.navbar {
+  background: transparent;
+}
+
+.navbar-title {
+  font-size: 0.75em;
+  font-weight: 500;
+  color: $primary;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+
+  &:hover {
+    border-bottom: 1px solid $primary !important;
+  }
+}
+
+.navbar-nav .nav-link {
+  color: $secondary !important;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-bottom: 0 hidden $secondary;
+  margin: 0 10px;
+  padding: 2px 2px 4px 2px !important;
+
+  &:hover {
+    border-bottom: 1px solid $secondary !important;
+    padding: 2px 2px 0 2px !important;
+  }
+}
+
+// Footer
+.nav-footer a {
+  color: $secondary;
+
+  &:hover {
+    color: $secondary-light;
+  }
+}
+
+.nav-footer .nav-link {
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.nav-footer-center i,
+.about-links .about-link i,
+.link-dark.me-1 i {
+  color: $secondary !important;
+
+  &:hover {
+    color: $secondary-light !important;
+  }
+}
+
+// Buttons and chips
+.btn-secondary {
+  color: $secondary;
+  background: transparent;
+  border-radius: 5px;
+}
+
+.btn-primary:hover {
+  background-color: $secondary;
+  border-color: $secondary;
+}
+
+.page-link {
+  color: $primary;
+
+  &:hover {
+    color: white;
+    background-color: $primary;
+    border-color: $primary;
+  }
+}
+
+.quarto-category {
+  background-color: $primary;
+  color: white;
+  border-color: $primary;
+
+  &:hover {
+    background-color: white;
+    color: $primary;
+  }
+}
+
+.listing-category {
+  color: $secondary !important;
+  border-color: $secondary !important;
+
+  &:hover {
+    background-color: $secondary;
+    color: white !important;
+  }
+}
+
+// Generic filters used in project/publication listing pages
+#category-pills .category-pill {
+  color: #6c757d;
+  border: solid 1px #dee2e6;
+  border-radius: 0.25rem;
+  text-transform: uppercase;
+  font-size: 0.65em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  padding-top: 0.15em;
+  padding-bottom: 0.15em;
+  cursor: pointer;
+  margin-right: 4px;
+  margin-bottom: 4px;
+  transition: all 0.2s ease-in-out;
+}
+
+#category-pills .category-pill.active {
+  background-color: var(--bs-primary);
+  color: white;
+  border-color: var(--bs-primary);
+}
+
+// Publications page card styling for presentations and posters
+section#presentations .quarto-post,
+section#posters .quarto-post {
+  border: none !important;
+  border-radius: 10px;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.35);
+  padding: 1rem;
+  margin-bottom: 1.25rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+section#presentations .quarto-post:hover,
+section#posters .quarto-post:hover {
+  transform: translateY(-2px);
+  box-shadow: 3px 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+section#presentations .quarto-post .thumbnail-image,
+section#posters .quarto-post .thumbnail-image {
+  border-radius: 8px;
+}
+
+// Listing cards
+.card {
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-img {
+  border-radius: 4px 4px 0 0;
+}
+
+// Typography scale used by the Silvia theme for title blocks
+.title {
+  font-size: 2.5em;
+  font-weight: 500;
+  line-height: 1.1em;
+}
+
+.subtitle {
+  font-size: 1.2em;
+
+  a {
+    color: white;
+    text-decoration: underline !important;
+
+    &:hover {
+      text-decoration: none !important;
+    }
+  }
+}
+
+.description a {
+  text-decoration: underline !important;
+
+  &:hover {
+    text-decoration: none !important;
+  }
+}
+
+.fixed-top,
+.aa-DetachedOverlay {
+  position: absolute;
+}
+
+@media screen and (max-width: 991.98px) {
+  .about-entity .about-links {
+    flex-direction: row !important;
+    justify-content: center !important;
+  }
+
+  .nav-footer {
+    flex-direction: row;
+  }
+
+  .nav-footer-center {
+    order: 1 !important;
+    flex-basis: 100%;
+    margin: 0 0 -1.2em 0;
+  }
+
+  .nav-footer-right {
+    order: 2 !important;
+    flex-basis: 100%;
+    text-align: center;
+  }
+
+  .nav-footer-left {
+    order: 3 !important;
+    flex-basis: 100%;
+    text-align: center;
+  }
+
+  .navbar .quarto-navbar-tools {
+    text-align: left;
+  }
+
+  section#presentations .quarto-post,
+  section#posters .quarto-post {
+    padding: 0.85rem;
+  }
+}
