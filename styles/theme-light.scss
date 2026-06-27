@@ -215,6 +215,7 @@ p code:not(.sourceCode), li code:not(.sourceCode), td code:not(.sourceCode) {
   }
 }
 
+// Buttons
 .quarto-category {
   background-color: $primary;
   color: white;
@@ -236,8 +237,13 @@ p code:not(.sourceCode), li code:not(.sourceCode), td code:not(.sourceCode) {
   }
 }
 
+div.quarto-about-jolla .about-link {
+  color: $body-color;
+}
+
+
 // Generic filters used in project/publication listing pages
-#category-pills .category-pill {
+.category-pill {
   color: #6c757d;
   border: solid 1px #dee2e6;
   border-radius: 0.25rem;
@@ -253,7 +259,7 @@ p code:not(.sourceCode), li code:not(.sourceCode), td code:not(.sourceCode) {
   transition: all 0.2s ease-in-out;
 }
 
-#category-pills .category-pill.active {
+.category-pill.active {
   background-color: var(--bs-primary);
   color: white;
   border-color: var(--bs-primary);
@@ -263,7 +269,7 @@ p code:not(.sourceCode), li code:not(.sourceCode), td code:not(.sourceCode) {
 section#presentations .quarto-post,
 section#posters .quarto-post {
   border: none !important;
-  border-radius: 10px;
+  border-radius: 4px;
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
   background: rgba(255, 255, 255, 0.35);
   padding: 1rem;
@@ -279,7 +285,7 @@ section#posters .quarto-post:hover {
 
 section#presentations .quarto-post .thumbnail-image,
 section#posters .quarto-post .thumbnail-image {
-  border-radius: 8px;
+  border-radius: 4px;
 }
 
 // Listing cards
@@ -288,6 +294,13 @@ section#posters .quarto-post .thumbnail-image {
   border: none;
   border-radius: 4px;
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.quarto-grid-link:hover .card,
+.quarto-grid-link:focus .card {
+  transform: translateY(-2px);
+  box-shadow: 3px 8px 20px rgba(0, 0, 0, 0.12);
 }
 
 .card-img {
@@ -364,3 +377,4 @@ section#posters .quarto-post .thumbnail-image {
     padding: 0.85rem;
   }
 }
+
