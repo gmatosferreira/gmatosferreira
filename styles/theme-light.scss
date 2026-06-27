@@ -5,7 +5,7 @@
 /*-- scss:defaults --*/
 
 // Custom palette tokens
-$spc-bg-0: #f8fcf8;
+$spc-bg-0: #e4e5e7;
 $spc-bg-1: #eef6ef;
 $spc-primary: #1f3f2f;
 $spc-primary-light: #3b7d53;
@@ -241,6 +241,38 @@ div.quarto-about-jolla .about-link {
   color: $body-color;
 }
 
+// Reusable link chips (homepage + contacts)
+.about-links {
+  display: flex;
+  justify-content: left;
+  column-gap: 0.8em;
+  row-gap: 15px;
+  flex-wrap: wrap;
+  padding-bottom: 1.2em;
+}
+
+.about-links .about-link {
+  display: inline-flex;
+  align-items: center;
+  color: $primary !important;
+  text-decoration: none;
+  border: 1px solid currentColor !important;
+  font-size: 0.85em;
+  padding: 0.35em 0.65em;
+  border-radius: 6px;
+  line-height: 1.1;
+}
+
+.about-links .about-link:hover,
+.about-links .about-link:focus {
+  color: $secondary-light !important;
+  background-color: rgba(255, 255, 255, 0.35);
+}
+
+.about-links .about-link i.bi {
+  margin-right: 0.25em;
+}
+
 
 // Generic filters used in project/publication listing pages
 .category-pill {
@@ -290,7 +322,7 @@ section#posters .quarto-post .thumbnail-image {
 
 // Listing cards
 .card {
-  background: transparent;
+  background: rgba(255, 255, 255, 0.35);
   border: none;
   border-radius: 4px;
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
