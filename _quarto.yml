@@ -8,7 +8,7 @@ project:
 website:
   title: "Gonçalo Matos"
   navbar:
-    search: false
+    search: true
     right:
       - href: index.qmd
         text: Home
