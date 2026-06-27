@@ -1,41 +1,68 @@
 [
   {
     "title": "GTFShift",
+    "image": "images/presentations/gtfshift.png",
     "url": "https://ushift.tecnico.ulisboa.pt/apps/gtfshift/slides/",
     "type": "presentation",
     "description": "on the R package to assist bus lane prioritization using an open and replicable methodoogy",
     "event": "GET 2026 conferece",
     "event_url": "https://www.getransportes.org/",
-    "date": "02/2026"
+    "date": "02/2026",
+    "keywords": [
+      "Bus lane prioritization",
+      "R package",
+      "Decision support tool",
+      "Transport planning"
+    ]
   },
   {
     "title": "SiteSelection",
+    "image": "images/presentations/siteselection.png",
     "url": "https://docs.google.com/presentation/d/1ywH9UABP6ts086GQrb0SJvu7B2WnsHcwhLTc9lC7g8M/edit?usp=sharing",
     "type": "keynote speech",
     "description": "on this R package to identify complex areas",
     "event": "Streets4All Closing Seminar",
     "event_url": "https://streets4all.tecnico.ulisboa.pt/seminar/",
-    "date": "12/2025"
+    "date": "12/2025",
+    "keywords": [
+      "Dynamic space allocation",
+      "Decision support tool",
+      "R package"
+    ]
   },
   {
     "title": "Through the Bus Driver’s Eye",
+    "image": "images/presentations/masters.png",
     "url": "https://gmatosferreira.github.io/master-thesis/slides_short.html",
     "type": "public defense of my master thesis",
     "description": "focused on how drivers knowledge can be used to monitor and plan a bus network",
-    "date": "11/2025"
+    "date": "11/2025",
+    "keywords": [
+      "Transport policy",
+      "Transport planning",
+      "Transport monitoring",
+      "Participatory planning"
+    ]
   },
   {
     "title": "Dawn transit network analysis",
+    "image": "images/presentations/dawn.png",
     "url": "https://lxparapessoas.github.io/rede-madrugada/slides",
     "type": "lecture",
     "description": "on scenario analysis of transit data",
     "event": "Rosa Félix course on Modelling of Transport Systems",
     "event_url": "https://u-shift.github.io/Traffic-Simulation-Models/",
     "context": "course of the Master in Transportation Systems at Instituto Superior Técnico (University of Lisbon)",
-    "date": "10/2025"
+    "date": "10/2025",
+    "keywords": [
+      "Transport planning",
+      "Transport monitoring",
+      "Decision support tool"
+    ]
   },
   {
     "title": "Making a website with Quarto",
+    "image": "images/presentations/quarto.png",
     "url": "https://www.dtnlisbon.pt/slides.html",
     "type": "lecture",
     "description": "on using Quarto publishing system to build a website with R",
@@ -43,6 +70,9 @@
     "event_url": "https://www.dtnlisbon.pt/courses/course2.html",
     "context": "part of DTN Annual Forum 2025",
     "context_url": "https://u-shift.github.io/DTNlisbon",
-    "date": "09/2025"
+    "date": "09/2025",
+    "keywords": [
+      "R package"
+    ]
   }
 ]
