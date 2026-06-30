@@ -1,0 +1,19 @@
+[
+  {
+    "title": "Streets4All Closing Seminar",
+    "url": "https://streets4all.tecnico.ulisboa.pt/seminar/",
+    "description": "an event to share the results of this project focused on dynamic and equitable reallocation of urban street space",
+    "details": "Event microsite creation, booklet edition, poster creation and logistic coordination",
+    "date": "12/2025",
+    "keywords": [
+      "Dynamic space allocation"
+    ]
+  },
+  {
+    "title": "DTN Annual Forum 2025",
+    "url": "https://u-shift.github.io/DTNlisbon",
+    "description": "the EIT Doctoral Training Network annual event that gathers experts, scholars, and industry leaders from around the world to discuss the latest advancements in urban mobility",
+    "date": "09/2025",
+    "details": "Event website creation (with Quarto), logistical support"
+  }
+]

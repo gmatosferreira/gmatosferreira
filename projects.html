@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Projects – Gonçalo Matos</title>
+<title>Projects &amp; Code – Gonçalo F. Matos</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -30,19 +33,16 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-cad3c076bfcc671fc53733afef69da86.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-905c6c4de947466143de5d79937c64f1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-a090c919cc5f12b43d57424a0b027af0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,82 +70,23 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-image','listing-title','listing-description','listing-categories','listing-author',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-image","listing-title","listing-description","listing-categories","listing-author"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    </a>
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Gonçalo Matos</span>
+    <span class="navbar-title">Gonçalo F. Matos</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
@@ -157,7 +98,11 @@ window.Quarto = {
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="./projects.html" aria-current="page"> 
-<span class="menu-text">Projects</span></a>
+<span class="menu-text">Projects &amp; Code</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./publications.html"> 
+<span class="menu-text">Research &amp; Publications</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./contacts.html"> 
@@ -174,14 +119,13 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(11)</span></div><div class="category" data-category="R1RGUyUyMHN0YW5kYXJk">GTFS standard <span class="quarto-category-count">(4)</span></div><div class="category" data-category="SmF2YQ==">Java <span class="quarto-category-count">(2)</span></div><div class="category" data-category="TWVkaWE=">Media <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TVFUVCUyMHByb3RvY29s">MQTT protocol <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UHVibGljJTIwcG9saWNpZXM=">Public policies <span class="quarto-category-count">(2)</span></div><div class="category" data-category="UHVibGljYXRpb25z">Publications <span class="quarto-category-count">(2)</span></div><div class="category" data-category="UHl0aG9u">Python <span class="quarto-category-count">(2)</span></div><div class="category" data-category="UUdJUw==">QGIS <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UiUyMGNvZGU=">R code <span class="quarto-category-count">(6)</span></div><div class="category" data-category="UmVhY3QlMjBmcmFtZXdvcms=">React framework <span class="quarto-category-count">(2)</span></div><div class="category" data-category="VHJhbnNwb3J0JTIwcGxhbm5pbmc=">Transport planning <span class="quarto-category-count">(2)</span></div><div class="category" data-category="V2ViJTIwdG9vbA==">Web tool <span class="quarto-category-count">(2)</span></div></div></div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Projects</h1>
+<h1 class="title">Projects &amp; Code</h1>
 </div>
 
 
@@ -198,122 +142,100 @@ window.Quarto = {
 </header>
 
 
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    // Script to override listing hyperlinks behaviour, forcing to open them on new tab
-    const container = document.querySelector('#listing-listing');
-    if (container) {
-      const links = container.querySelectorAll('a');
-      links.forEach(link => {
-        link.setAttribute('target', '_blank');
-      });
-    }
-
-    // Script to change elements order (first projects list, then contributions)
-    const listing = document.getElementById("listing-listing");
-
-    const sections = ["civic-engagement-open-data", "publications", "presentations", "posters", "events-organization", "open-source-contributions"];
-
-    if (listing) {
-      const parent = listing.parentNode;
-      sections.forEach(id => {
-        const el = document.getElementById(id);
-        if (el) parent.append(el);
-      });
-    }
-  });
-</script>
-<section id="publications" class="level1">
-<h1>Publications</h1>
-<ul>
-<li>Gonçalo Matos, Rosa Félix, Filipe Moura. <strong>From the Steering Wheel to the Planning Table: A Participatory Framework for Bus Network Monitoring and Planning</strong>. <em>Paper under review.</em></li>
-</ul>
-</section>
-<section id="civic-engagement-open-data" class="level1">
-<h1>Civic engagement &amp; open data</h1>
-<ul>
-<li><p><a href="https://www.publico.pt/autor/goncalo-matos" target="_blank">Público</a>, the Portuguese newspaper where I casually write opinion articles about transportation (12/2025 - Present)</p></li>
-<li><p><a href="https://www.openstreetmap.org/user/Gon%C3%A7alo%20Matos/history" target="_blank">OpenStreetMap</a>, where I often contribute with improvements on transit data (04/2025 - Present)</p></li>
-</ul>
-</section>
-<section id="presentations" class="level1">
-<h1>Presentations</h1>
-<ul>
-<li><p><a href="https://ushift.tecnico.ulisboa.pt/apps/gtfshift/slides/" target="_blank">GTFShift</a>, a presentation on the R package to assist bus lane prioritization using an open and replicable methodoogy, presented at <a href="https://www.getransportes.org/" target="_blank">GET 2026</a> conferece (02/2026)</p></li>
-<li><p><a href="https://docs.google.com/presentation/d/1ywH9UABP6ts086GQrb0SJvu7B2WnsHcwhLTc9lC7g8M/edit?usp=sharing" target="_blank">SiteSelection</a>, a keynote speech on this R package to identify complex areas, presented on <a href="https://streets4all.tecnico.ulisboa.pt/seminar/" target="_blank">Streets4All Closing Seminar</a> (12/2025)</p></li>
-<li><p><a href="https://gmatosferreira.github.io/master-thesis/slides_short.html" target="_blank">Through the Bus Driver’s Eye</a>, the public defense of my master thesis, focused on how drivers knowledge can be used to monitor and plan a bus network (11/2025)</p></li>
-<li><p><a href="https://lxparapessoas.github.io/rede-madrugada/slides" target="_blank">Dawn transit network analysis</a>, a lecture on scenario analysis of transit data, presented on Rosa Félix course on <a href="https://u-shift.github.io/Traffic-Simulation-Models/" target="_blank">Modelling of Transport Systems</a> course of the Master in Transportation Systems at Instituto Superior Técnico (University of Lisbon) (10/2025)</p></li>
-<li><p><a href="https://www.dtnlisbon.pt/slides.html" target="_blank">Making a website with Quarto</a>, a lecture on using Quarto publishing system to build a website with R, presented on Robin Lovelace course on <a href="https://www.dtnlisbon.pt/courses/course2.html" target="_blank">Tools and Skills for Reproducible Transport Research</a>, part of <a href="https://u-shift.github.io/DTNlisbon" target="_blank">DTN Annual Forum 2025</a> (09/2025)</p></li>
-</ul>
-</section>
-<section id="posters" class="level1">
-<h1>Posters</h1>
-<ul>
-<li><a href="https://drive.google.com/file/d/1gnX79yByKaN1ckpzebVeNoCJA1oTCalA/view?usp=drive_link" target="_blank">Through the Bus Driver’s Eye</a>, a poster on this participatory framework for bus monitoring and planning focused on bus drivers, presented at <a href="https://www.getransportes.org/" target="_blank">GET 2026</a> conferece (02/2026)</li>
-</ul>
-</section>
-<section id="events-organization" class="level1">
-<h1>Events organization</h1>
-<ul>
-<li><p><a href="https://streets4all.tecnico.ulisboa.pt/seminar/" target="_blank">Streets4All Closing Seminar</a>, an event to share the results of this project focused on dynamic and equitable reallocation of urban street space</p>
-<blockquote class="blockquote">
-<p>Event microsite creation, booklet edition, poster creation and logistic coordination</p>
-</blockquote></li>
-<li><p><a href="https://u-shift.github.io/DTNlisbon" target="_blank">DTN Annual Forum 2025</a>, the EIT Doctoral Training Network annual event that gathers experts, scholars, and industry leaders from around the world to discuss the latest advancements in urban mobility (09/2025)</p>
-<blockquote class="blockquote">
-<p>Event website creation (with Quarto), logistical support</p>
-</blockquote></li>
-</ul>
-</section>
-<section id="open-source-contributions" class="level1">
-<h1>Open source contributions</h1>
-<ul>
-<li><p><a href="https://github.com/UrbanAnalyst/gtfsrouter/releases/tag/v0.1.4" target="_blank">gtfsrouter</a>, an R package to route and analyse GTFS data (06/2025)</p></li>
-<li><p><a href="https://github.com/nptscot/osmactive/pull/36" target="_blank">osmactive</a>, an R package to extract active travel infrastructure from OpenStreetMap data (03/2025)</p></li>
-</ul>
-
-
-
-</section>
-
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="UiUyMGNvZGUlMkNQeXRob24lMkNQdWJsaWNhdGlvbnMlMkNQdWJsaWMlMjBwb2xpY2llcyUyQ1RyYW5zcG9ydCUyMHBsYW5uaW5n">
-<a href="https://scholar.tecnico.ulisboa.pt/records/vFoffyTV2ecQpcAMjga_ZVmh-boLRO5P89fo" class="quarto-grid-link">
+<div id="category-pills" class="d-flex flex-wrap mb-4">
+<div class="category-pill active" data-category="all">
+All
+</div>
+<div class="category-pill" data-category="Decision support tool">
+Decision support tool
+</div>
+<div class="category-pill" data-category="GTFS standard">
+GTFS standard
+</div>
+<div class="category-pill" data-category="Java">
+Java
+</div>
+<div class="category-pill" data-category="Media">
+Media
+</div>
+<div class="category-pill" data-category="MQTT protocol">
+MQTT protocol
+</div>
+<div class="category-pill" data-category="OSM">
+OSM
+</div>
+<div class="category-pill" data-category="Publications">
+Publications
+</div>
+<div class="category-pill" data-category="Python">
+Python
+</div>
+<div class="category-pill" data-category="QGIS">
+QGIS
+</div>
+<div class="category-pill" data-category="R code">
+R code
+</div>
+<div class="category-pill" data-category="React framework">
+React framework
+</div>
+<div class="category-pill" data-category="Transport planning">
+Transport planning
+</div>
+<div class="category-pill" data-category="Transport policy">
+Transport policy
+</div>
+<div class="category-pill" data-category="Web tool">
+Web tool
+</div>
+</div>
+<div id="listing-listing" class="quarto-listing quarto-listing-container-grid">
+<div id="projects-grid" class="list grid quarto-listing-cols-3">
+<div class="g-col-1" data-index="0" data-categories="UiUyMGNvZGUlMkNQeXRob24lMkNQdWJsaWNhdGlvbnMlMkNUcmFuc3BvcnQlMjBwb2xpY3kl
+MkNUcmFuc3BvcnQlMjBwbGFubmluZw==" data-listing-date-sort="null" data-listing-file-modified-sort="null">
+<a href="https://scholar.tecnico.ulisboa.pt/records/vFoffyTV2ecQpcAMjga_ZVmh-boLRO5P89fo" class="quarto-grid-link" target="_blank">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img loading="lazy" src="./images/projects/master.jpg" class="thumbnail-image card-img" style="height: 150px;">
+<img loading="lazy" src="images/projects/master.jpg" class="thumbnail-image card-img" style="height: 150px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 <i class="bi bi-pin-angle-fill"></i> Through the bus driver’s eye
 </h5>
 <div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('UiUyMGNvZGU='); return false;">R code</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UHl0aG9u'); return false;">Python</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UHVibGljYXRpb25z'); return false;">Publications</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UHVibGljJTIwcG9saWNpZXM='); return false;">Public policies</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('VHJhbnNwb3J0JTIwcGxhbm5pbmc='); return false;">Transport planning</div>
-
+<div class="listing-category" onclick="window.filterProjects('R code'); event.preventDefault(); event.stopPropagation(); return false;" style="cursor:pointer;">
+R code
 </div>
-<div class="card-text listing-description delink">
-<p>Master thesis on Transportation Systems, focused on how drivers knowledge can be used to monitor and plan a bus network</p>
+<div class="listing-category" onclick="window.filterProjects('Python'); event.preventDefault(); event.stopPropagation(); return false;" style="cursor:pointer;">
+Python
+</div>
+<div class="listing-category" onclick="window.filterProjects('Publications'); event.preventDefault(); event.stopPropagation(); return false;" style="cursor:pointer;">
+Publications
+</div>
+<div class="listing-category" onclick="window.filterProjects('Transport policy'); event.preventDefault(); event.stopPropagation(); return false;" style="cursor:pointer;">
+Transport policy
+</div>
+<div class="listing-category" onclick="window.filterProjects('Transport planning'); event.preventDefault(); event.stopPropagation(); return false;" style="cursor:pointer;">
+Transport planning
+</div>
+</div>
+<div class="card-text listing-description">
+<p>
+Master thesis on Transportation Systems, focused on how drivers knowledge can be used to monitor and plan a bus network
+</p>
 </div>
 <div class="card-attribution card-text-small start">
 <div class="listing-author">
-2025
+<p>2025</p>
 </div>
 </div>
 </div>
-</div></a>
 </div>
-<div class="g-col-1" data-index="1" data-categories="UiUyMGNvZGUlMkNHVEZTJTIwc3RhbmRhcmQ=">
-<a href="https://u-shift.github.io/GTFShift/" class="quarto-grid-link">
+</a><p><a href="https://scholar.tecnico.ulisboa.pt/records/vFoffyTV2ecQpcAMjga_ZVmh-boLRO5P89fo" class="quarto-grid-link" target="_blank"></a></p>
+</div>
+<div class="g-col-1" data-index="1" data-categories="UiUyMGNvZGUlMkNPU00lMkNHVEZTJTIwc3RhbmRhcmQlMkNEZWNpc2lvbiUyMHN1cHBvcnQl
+MjB0b29sJTJDV2ViJTIwdG9vbA==" data-listing-date-sort="null" data-listing-file-modified-sort="null">
+<a href="https://u-shift.github.io/GTFShift/" class="quarto-grid-link" target="_blank">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
 <img loading="lazy" src="images/projects/gtfshift.jpg" class="thumbnail-image card-img" style="height: 150px;">
@@ -323,25 +245,38 @@ window.Quarto = {
 <i class="bi bi-pin-angle-fill"></i> GTFShift
 </h5>
 <div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('UiUyMGNvZGU='); return false;">R code</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('R1RGUyUyMHN0YW5kYXJk'); return false;">GTFS standard</div>
-
+<div class="listing-category" onclick="window.filterProjects('R code'); event.preventDefault(); event.stopPropagation(); return false;" style="cursor:pointer;">
+R code
 </div>
-<div class="card-text listing-description delink">
-<p>R package to explore and analyse GTFS files with a focus on identifying high frequency corridors</p>
+<div class="listing-category" onclick="window.filterProjects('OSM'); event.preventDefault(); event.stopPropagation(); return false;" style="cursor:pointer;">
+OSM
+</div>
+<div class="listing-category" onclick="window.filterProjects('GTFS standard'); event.preventDefault(); event.stopPropagation(); return false;" style="cursor:pointer;">
+GTFS standard
+</div>
+<div class="listing-category" onclick="window.filterProjects('Decision support tool'); event.preventDefault(); event.stopPropagation(); return false;" style="cursor:pointer;">
+Decision support tool
+</div>
+<div class="listing-category" onclick="window.filterProjects('Web tool'); event.preventDefault(); event.stopPropagation(); return false;" style="cursor:pointer;">
+Web tool
+</div>
+</div>
+<div class="card-text listing-description">
+<p>
+R package to explore and analyse GTFS files with a focus on identifying high frequency corridors
+</p>
 </div>
 <div class="card-attribution card-text-small start">
 <div class="listing-author">
-2025 (Ongoing)
+<p>2025 (Ongoing)</p>
 </div>
 </div>
 </div>
-</div></a>
 </div>
-<div class="g-col-1" data-index="2" data-categories="TWVkaWElMkNQdWJsaWNhdGlvbnM=">
-<a href="https://lisboaparapessoas.pt/autor/goncalomferreira/" class="quarto-grid-link">
+</a><p><a href="https://u-shift.github.io/GTFShift/" class="quarto-grid-link" target="_blank"></a></p>
+</div>
+<div class="g-col-1" data-index="2" data-categories="TWVkaWElMkNQdWJsaWNhdGlvbnM=" data-listing-date-sort="null" data-listing-file-modified-sort="null">
+<a href="https://lisboaparapessoas.pt/autor/goncalomferreira/" class="quarto-grid-link" target="_blank">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
 <img loading="lazy" src="https://lisboaparapessoas.pt/wp-content/uploads/2024/01/jornalppanuncio.png" class="thumbnail-image card-img" style="height: 150px;">
@@ -351,55 +286,71 @@ window.Quarto = {
 <i class="bi bi-pin-angle-fill"></i> Lisboa Para Pessoas
 </h5>
 <div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('TWVkaWE='); return false;">Media</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UHVibGljYXRpb25z'); return false;">Publications</div>
-
+<div class="listing-category" onclick="window.filterProjects('Media'); event.preventDefault(); event.stopPropagation(); return false;" style="cursor:pointer;">
+Media
 </div>
-<div class="card-text listing-description delink">
-<p>At LPP I merge my passions for writing and the transportation world, covering stories about mobility and urban dynamics</p>
+<div class="listing-category" onclick="window.filterProjects('Publications'); event.preventDefault(); event.stopPropagation(); return false;" style="cursor:pointer;">
+Publications
+</div>
+</div>
+<div class="card-text listing-description">
+<p>
+At LPP I merge my passions for writing and the transportation world, covering stories about mobility and urban dynamics
+</p>
 </div>
 <div class="card-attribution card-text-small start">
 <div class="listing-author">
-2024 (Ongoing)
+<p>2024 (Ongoing)</p>
 </div>
 </div>
 </div>
-</div></a>
 </div>
-<div class="g-col-1" data-index="3" data-categories="UiUyMGNvZGUlMkNQdWJsaWMlMjBwb2xpY2llcyUyQ1RyYW5zcG9ydCUyMHBsYW5uaW5n">
-<a href="https://u-shift.github.io/IMPT-web/" class="quarto-grid-link">
+</a><p><a href="https://lisboaparapessoas.pt/autor/goncalomferreira/" class="quarto-grid-link" target="_blank"></a></p>
+</div>
+<div class="g-col-1" data-index="3" data-categories="UiUyMGNvZGUlMkNUcmFuc3BvcnQlMjBwb2xpY3klMkNUcmFuc3BvcnQlMjBwbGFubmluZyUy
+Q0RlY2lzaW9uJTIwc3VwcG9ydCUyMHRvb2wlMkNXZWIlMjB0b29s" data-listing-date-sort="null" data-listing-file-modified-sort="null">
+<a href="https://u-shift.github.io/IMPT-web/" class="quarto-grid-link" target="_blank">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img loading="lazy" src="./images/projects/imtp.jpg" class="thumbnail-image card-img" style="height: 150px;">
+<img loading="lazy" src="images/projects/imtp.jpg" class="thumbnail-image card-img" style="height: 150px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 Transport Poverty Index
 </h5>
 <div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('UiUyMGNvZGU='); return false;">R code</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UHVibGljJTIwcG9saWNpZXM='); return false;">Public policies</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('VHJhbnNwb3J0JTIwcGxhbm5pbmc='); return false;">Transport planning</div>
-
+<div class="listing-category" onclick="window.filterProjects('R code'); event.preventDefault(); event.stopPropagation(); return false;" style="cursor:pointer;">
+R code
 </div>
-<div class="card-text listing-description delink">
-<p>Open and replicable index that enables measurement and monitoring of transport poverty</p>
+<div class="listing-category" onclick="window.filterProjects('Transport policy'); event.preventDefault(); event.stopPropagation(); return false;" style="cursor:pointer;">
+Transport policy
+</div>
+<div class="listing-category" onclick="window.filterProjects('Transport planning'); event.preventDefault(); event.stopPropagation(); return false;" style="cursor:pointer;">
+Transport planning
+</div>
+<div class="listing-category" onclick="window.filterProjects('Decision support tool'); event.preventDefault(); event.stopPropagation(); return false;" style="cursor:pointer;">
+Decision support tool
+</div>
+<div class="listing-category" onclick="window.filterProjects('Web tool'); event.preventDefault(); event.stopPropagation(); return false;" style="cursor:pointer;">
+Web tool
+</div>
+</div>
+<div class="card-text listing-description">
+<p>
+Open and replicable index that enables measurement and monitoring of transport poverty
+</p>
 </div>
 <div class="card-attribution card-text-small start">
 <div class="listing-author">
-2026 (Ongoing)
+<p>2026 (Ongoing)</p>
 </div>
 </div>
 </div>
-</div></a>
 </div>
-<div class="g-col-1" data-index="4" data-categories="UiUyMGNvZGU=">
-<a href="https://github.com/ropensci/slopes" class="quarto-grid-link">
+</a><p><a href="https://u-shift.github.io/IMPT-web/" class="quarto-grid-link" target="_blank"></a></p>
+</div>
+<div class="g-col-1" data-index="4" data-categories="UiUyMGNvZGU=" data-listing-date-sort="null" data-listing-file-modified-sort="null">
+<a href="https://github.com/ropensci/slopes" class="quarto-grid-link" target="_blank">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
 <img loading="lazy" src="https://user-images.githubusercontent.com/1825120/121820334-2435f080-cc8a-11eb-962c-79dcba97e459.png" class="thumbnail-image card-img" style="height: 150px;">
@@ -409,23 +360,26 @@ Transport Poverty Index
 Slopes
 </h5>
 <div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('UiUyMGNvZGU='); return false;">R code</div>
-
+<div class="listing-category" onclick="window.filterProjects('R code'); event.preventDefault(); event.stopPropagation(); return false;" style="cursor:pointer;">
+R code
 </div>
-<div class="card-text listing-description delink">
-<p>I am helping maintaining and updating this R package focused on calculate slopes of roads, rivers and trajectories</p>
+</div>
+<div class="card-text listing-description">
+<p>
+I am helping maintaining and updating this R package focused on calculate slopes of roads, rivers and trajectories
+</p>
 </div>
 <div class="card-attribution card-text-small start">
 <div class="listing-author">
-2025 (Ongoing)
+<p>2025 (Ongoing)</p>
 </div>
 </div>
 </div>
-</div></a>
 </div>
-<div class="g-col-1" data-index="5" data-categories="UiUyMGNvZGUlMkNHVEZTJTIwc3RhbmRhcmQ=">
-<a href="https://github.com/gmatosferreira/Spreadsheet-to-GTFS" class="quarto-grid-link">
+</a><p><a href="https://github.com/ropensci/slopes" class="quarto-grid-link" target="_blank"></a></p>
+</div>
+<div class="g-col-1" data-index="5" data-categories="UiUyMGNvZGUlMkNHVEZTJTIwc3RhbmRhcmQ=" data-listing-date-sort="null" data-listing-file-modified-sort="null">
+<a href="https://github.com/gmatosferreira/Spreadsheet-to-GTFS" class="quarto-grid-link" target="_blank">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
 <img loading="lazy" src="https://images.unsplash.com/photo-1494627344499-afd1027ee1f5?q=80&amp;w=2069&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="thumbnail-image card-img" style="height: 150px;">
@@ -435,25 +389,29 @@ Slopes
 Spreadsheet to GTFS
 </h5>
 <div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('UiUyMGNvZGU='); return false;">R code</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('R1RGUyUyMHN0YW5kYXJk'); return false;">GTFS standard</div>
-
+<div class="listing-category" onclick="window.filterProjects('R code'); event.preventDefault(); event.stopPropagation(); return false;" style="cursor:pointer;">
+R code
 </div>
-<div class="card-text listing-description delink">
-<p>A simple script that enables the generation of a GTFS feed from a simple spreadsheet</p>
+<div class="listing-category" onclick="window.filterProjects('GTFS standard'); event.preventDefault(); event.stopPropagation(); return false;" style="cursor:pointer;">
+GTFS standard
+</div>
+</div>
+<div class="card-text listing-description">
+<p>
+A simple script that enables the generation of a GTFS feed from a simple spreadsheet
+</p>
 </div>
 <div class="card-attribution card-text-small start">
 <div class="listing-author">
-2025
+<p>2025</p>
 </div>
 </div>
 </div>
-</div></a>
 </div>
-<div class="g-col-1" data-index="6" data-categories="UiUyMGNvZGUlMkNXZWIlMjB0b29sJTJDR1RGUyUyMHN0YW5kYXJk">
-<a href="https://github.com/lxparapessoas/rede-madrugada" class="quarto-grid-link">
+</a><p><a href="https://github.com/gmatosferreira/Spreadsheet-to-GTFS" class="quarto-grid-link" target="_blank"></a></p>
+</div>
+<div class="g-col-1" data-index="6" data-categories="UiUyMGNvZGUlMkNXZWIlMjB0b29sJTJDR1RGUyUyMHN0YW5kYXJk" data-listing-date-sort="null" data-listing-file-modified-sort="null">
+<a href="https://github.com/lxparapessoas/rede-madrugada" class="quarto-grid-link" target="_blank">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
 <img loading="lazy" src="https://github.com/lxparapessoas/rede-madrugada/raw/main/images/screenshot.png" class="thumbnail-image card-img" style="height: 150px;">
@@ -463,27 +421,32 @@ Spreadsheet to GTFS
 Dawn transit network analsyis
 </h5>
 <div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('UiUyMGNvZGU='); return false;">R code</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('V2ViJTIwdG9vbA=='); return false;">Web tool</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('R1RGUyUyMHN0YW5kYXJk'); return false;">GTFS standard</div>
-
+<div class="listing-category" onclick="window.filterProjects('R code'); event.preventDefault(); event.stopPropagation(); return false;" style="cursor:pointer;">
+R code
 </div>
-<div class="card-text listing-description delink">
-<p>Aggregated analysis of transit offer in Lisbon Metro Area during the night time</p>
+<div class="listing-category" onclick="window.filterProjects('Web tool'); event.preventDefault(); event.stopPropagation(); return false;" style="cursor:pointer;">
+Web tool
+</div>
+<div class="listing-category" onclick="window.filterProjects('GTFS standard'); event.preventDefault(); event.stopPropagation(); return false;" style="cursor:pointer;">
+GTFS standard
+</div>
+</div>
+<div class="card-text listing-description">
+<p>
+Aggregated analysis of transit offer in Lisbon Metro Area during the night time
+</p>
 </div>
 <div class="card-attribution card-text-small start">
 <div class="listing-author">
-2025
+<p>2025</p>
 </div>
 </div>
 </div>
-</div></a>
 </div>
-<div class="g-col-1" data-index="7" data-categories="V2ViJTIwdG9vbA==">
-<a href="https://github.com/U-Shift/shademap-download-tool" class="quarto-grid-link">
+</a><p><a href="https://github.com/lxparapessoas/rede-madrugada" class="quarto-grid-link" target="_blank"></a></p>
+</div>
+<div class="g-col-1" data-index="7" data-categories="V2ViJTIwdG9vbA==" data-listing-date-sort="null" data-listing-file-modified-sort="null">
+<a href="https://github.com/U-Shift/shademap-download-tool" class="quarto-grid-link" target="_blank">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
 <img loading="lazy" src="https://github.com/U-Shift/shademap-download-tool/raw/main/images/printscreen.png" class="thumbnail-image card-img" style="height: 150px;">
@@ -493,55 +456,65 @@ Dawn transit network analsyis
 ShadeMap download tool
 </h5>
 <div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('V2ViJTIwdG9vbA=='); return false;">Web tool</div>
-
+<div class="listing-category" onclick="window.filterProjects('Web tool'); event.preventDefault(); event.stopPropagation(); return false;" style="cursor:pointer;">
+Web tool
 </div>
-<div class="card-text listing-description delink">
-<p>Interactive tool that allows to export shadow and sun exposure layers from ShadeMap over a custom area, with a high level of detail</p>
+</div>
+<div class="card-text listing-description">
+<p>
+Interactive tool that allows to export shadow and sun exposure layers from ShadeMap over a custom area, with a high level of detail
+</p>
 </div>
 <div class="card-attribution card-text-small start">
 <div class="listing-author">
-2025
+<p>2025</p>
 </div>
 </div>
 </div>
-</div></a>
 </div>
-<div class="g-col-1" data-index="8" data-categories="SmF2YSUyQ01RVFQlMjBwcm90b2NvbCUyQ1JlYWN0JTIwZnJhbWV3b3JrJTJDR1RGUyUyMHN0YW5kYXJk">
-<a href="https://www.cp.pt/info/en/w/real-time-info-project" class="quarto-grid-link">
+</a><p><a href="https://github.com/U-Shift/shademap-download-tool" class="quarto-grid-link" target="_blank"></a></p>
+</div>
+<div class="g-col-1" data-index="8" data-categories="SmF2YSUyQ01RVFQlMjBwcm90b2NvbCUyQ1JlYWN0JTIwZnJhbWV3b3JrJTJDR1RGUyUyMHN0
+YW5kYXJk" data-listing-date-sort="null" data-listing-file-modified-sort="null">
+<a href="https://www.cp.pt/info/en/w/real-time-info-project" class="quarto-grid-link" target="_blank">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img loading="lazy" src="./images/projects/cp-realtime-banner.jpg" class="thumbnail-image card-img" style="height: 150px;">
+<img loading="lazy" src="images/projects/cp-realtime-banner.jpg" class="thumbnail-image card-img" style="height: 150px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 CP Real time info
 </h5>
 <div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('SmF2YQ=='); return false;">Java</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('TVFUVCUyMHByb3RvY29s'); return false;">MQTT protocol</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UmVhY3QlMjBmcmFtZXdvcms='); return false;">React framework</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('R1RGUyUyMHN0YW5kYXJk'); return false;">GTFS standard</div>
-
+<div class="listing-category" onclick="window.filterProjects('Java'); event.preventDefault(); event.stopPropagation(); return false;" style="cursor:pointer;">
+Java
 </div>
-<div class="card-text listing-description delink">
-<p>Real time monitoring of trains’ position and occupancy to improve passenger information</p>
+<div class="listing-category" onclick="window.filterProjects('MQTT protocol'); event.preventDefault(); event.stopPropagation(); return false;" style="cursor:pointer;">
+MQTT protocol
+</div>
+<div class="listing-category" onclick="window.filterProjects('React framework'); event.preventDefault(); event.stopPropagation(); return false;" style="cursor:pointer;">
+React framework
+</div>
+<div class="listing-category" onclick="window.filterProjects('GTFS standard'); event.preventDefault(); event.stopPropagation(); return false;" style="cursor:pointer;">
+GTFS standard
+</div>
+</div>
+<div class="card-text listing-description">
+<p>
+Real time monitoring of trains’ position and occupancy to improve passenger information
+</p>
 </div>
 <div class="card-attribution card-text-small start">
 <div class="listing-author">
-2024
+<p>2024</p>
 </div>
 </div>
 </div>
-</div></a>
 </div>
-<div class="g-col-1" data-index="9" data-categories="UUdJUyUyQ1B5dGhvbg==">
-<a href="https://github.com/gmatosferreira/Mapping-a-pedestrian-network" class="quarto-grid-link">
+</a><p><a href="https://www.cp.pt/info/en/w/real-time-info-project" class="quarto-grid-link" target="_blank"></a></p>
+</div>
+<div class="g-col-1" data-index="9" data-categories="UUdJUyUyQ1B5dGhvbg==" data-listing-date-sort="null" data-listing-file-modified-sort="null">
+<a href="https://github.com/gmatosferreira/Mapping-a-pedestrian-network" class="quarto-grid-link" target="_blank">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
 <img loading="lazy" src="https://github.com/gmatosferreira/Mapping-a-pedestrian-network/raw/main/files/network.png" class="thumbnail-image card-img" style="height: 150px;">
@@ -551,54 +524,209 @@ CP Real time info
 Mapping a pedestrian network
 </h5>
 <div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('UUdJUw=='); return false;">QGIS</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UHl0aG9u'); return false;">Python</div>
-
+<div class="listing-category" onclick="window.filterProjects('QGIS'); event.preventDefault(); event.stopPropagation(); return false;" style="cursor:pointer;">
+QGIS
 </div>
-<div class="card-text listing-description delink">
-<p>Methodology for mapping a pedestrian network on the field using QField app</p>
+<div class="listing-category" onclick="window.filterProjects('Python'); event.preventDefault(); event.stopPropagation(); return false;" style="cursor:pointer;">
+Python
+</div>
+</div>
+<div class="card-text listing-description">
+<p>
+Methodology for mapping a pedestrian network on the field using QField app
+</p>
 </div>
 <div class="card-attribution card-text-small start">
 <div class="listing-author">
-2024
+<p>2024</p>
 </div>
 </div>
 </div>
-</div></a>
 </div>
-<div class="g-col-1" data-index="10" data-categories="SmF2YSUyQ1JlYWN0JTIwZnJhbWV3b3Jr">
-<a href="https://cp.pt/info/en/w/trains-timetables-pdf" class="quarto-grid-link">
+</a><p><a href="https://github.com/gmatosferreira/Mapping-a-pedestrian-network" class="quarto-grid-link" target="_blank"></a></p>
+</div>
+<div class="g-col-1" data-index="10" data-categories="SmF2YSUyQ1JlYWN0JTIwZnJhbWV3b3Jr" data-listing-date-sort="null" data-listing-file-modified-sort="null">
+<a href="https://cp.pt/info/en/w/trains-timetables-pdf" class="quarto-grid-link" target="_blank">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img loading="lazy" src="./images/projects/cp-timetables.png" class="thumbnail-image card-img" style="height: 150px;">
+<img loading="lazy" src="images/projects/cp-timetables.png" class="thumbnail-image card-img" style="height: 150px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 CP Timetables
 </h5>
 <div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('SmF2YQ=='); return false;">Java</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UmVhY3QlMjBmcmFtZXdvcms='); return false;">React framework</div>
-
+<div class="listing-category" onclick="window.filterProjects('Java'); event.preventDefault(); event.stopPropagation(); return false;" style="cursor:pointer;">
+Java
 </div>
-<div class="card-text listing-description delink">
-<p>Automation of the timetable generation process to assist the client management team</p>
+<div class="listing-category" onclick="window.filterProjects('React framework'); event.preventDefault(); event.stopPropagation(); return false;" style="cursor:pointer;">
+React framework
+</div>
+</div>
+<div class="card-text listing-description">
+<p>
+Automation of the timetable generation process to assist the client management team
+</p>
 </div>
 <div class="card-attribution card-text-small start">
 <div class="listing-author">
-2023
+<p>2023</p>
 </div>
 </div>
 </div>
-</div></a>
+</div>
+</a><p><a href="https://cp.pt/info/en/w/trains-timetables-pdf" class="quarto-grid-link" target="_blank"></a></p>
 </div>
 </div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div>
+<section id="civic-engagement-open-data" class="level1">
+<h1>Civic engagement &amp; open data</h1>
+<div class="quarto-listing quarto-listing-container-default">
+<div class="list quarto-listing-default">
+<div class="quarto-post" data-index="0" data-categories="">
+<div class="body">
+<h3 class="no-anchor listing-title" data-anchor-id="civic-engagement-open-data">
+<a class="no-external" href="https://www.publico.pt/autor/goncalo-matos" target="_blank">Público</a>
+</h3>
+<div class="listing-subtitle">
+<p>the Portuguese newspaper where I casually write opinion articles about transportation</p>
+</div>
+<div class="listing-categories">
+
+</div>
+</div>
+<div class="metadata">
+<a class="no-external" href="https://www.publico.pt/autor/goncalo-matos" target="_blank">
+<div class="listing-date">
+<p>12/2025 - Present</p>
+</div>
+</a><p><a class="no-external" href="https://www.publico.pt/autor/goncalo-matos" target="_blank"></a></p>
+</div>
+</div>
+<div class="quarto-post" data-index="1" data-categories="">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a class="no-external" href="https://www.openstreetmap.org/user/Gon%C3%A7alo%20Matos/history" target="_blank">OpenStreetMap</a>
+</h3>
+<div class="listing-subtitle">
+<p>where I often contribute with improvements on transit data</p>
+</div>
+<div class="listing-categories">
+
+</div>
+</div>
+<div class="metadata">
+<a class="no-external" href="https://www.openstreetmap.org/user/Gon%C3%A7alo%20Matos/history" target="_blank">
+<div class="listing-date">
+<p>04/2025 - Present</p>
+</div>
+</a><p><a class="no-external" href="https://www.openstreetmap.org/user/Gon%C3%A7alo%20Matos/history" target="_blank"></a></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="open-source-contributions" class="level1">
+<h1>Open source contributions</h1>
+<div class="quarto-listing quarto-listing-container-default">
+<div class="list quarto-listing-default">
+<div class="quarto-post" data-index="0" data-categories="UiUyMGNvZGUlMkNHVEZTJTIwc3RhbmRhcmQ=">
+<div class="body">
+<h3 class="no-anchor listing-title" data-anchor-id="open-source-contributions">
+<a class="no-external" href="https://github.com/UrbanAnalyst/gtfsrouter/releases/tag/v0.1.4" target="_blank">gtfsrouter</a>
+</h3>
+<div class="listing-subtitle">
+<p>an R package to route and analyse GTFS data</p>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.filterProjects('R code'); event.preventDefault(); event.stopPropagation(); return false;" style="cursor:pointer;">
+R code
+</div>
+<div class="listing-category" onclick="window.filterProjects('GTFS standard'); event.preventDefault(); event.stopPropagation(); return false;" style="cursor:pointer;">
+GTFS standard
+</div>
+</div>
+</div>
+<div class="metadata">
+<a class="no-external" href="https://github.com/UrbanAnalyst/gtfsrouter/releases/tag/v0.1.4" target="_blank">
+<div class="listing-date">
+<p>06/2025</p>
+</div>
+</a><p><a class="no-external" href="https://github.com/UrbanAnalyst/gtfsrouter/releases/tag/v0.1.4" target="_blank"></a></p>
+</div>
+</div>
+<div class="quarto-post" data-index="1" data-categories="UiUyMGNvZGUlMkNPU00=">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a class="no-external" href="https://github.com/nptscot/osmactive/pull/36" target="_blank">osmactive</a>
+</h3>
+<div class="listing-subtitle">
+<p>an R package to extract active travel infrastructure from OpenStreetMap data</p>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.filterProjects('R code'); event.preventDefault(); event.stopPropagation(); return false;" style="cursor:pointer;">
+R code
+</div>
+<div class="listing-category" onclick="window.filterProjects('OSM'); event.preventDefault(); event.stopPropagation(); return false;" style="cursor:pointer;">
+OSM
+</div>
+</div>
+</div>
+<div class="metadata">
+<a class="no-external" href="https://github.com/nptscot/osmactive/pull/36" target="_blank">
+<div class="listing-date">
+<p>03/2025</p>
+</div>
+</a><p><a class="no-external" href="https://github.com/nptscot/osmactive/pull/36" target="_blank"></a></p>
+</div>
+</div>
+</div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const grid = document.getElementById('projects-grid');
+    const pillsContainer = document.getElementById('category-pills');
+
+    window.filterProjects = function(category) {
+      document.querySelectorAll('#category-pills .category-pill').forEach(pill => {
+        if (pill.getAttribute('data-category') === category) {
+          pill.classList.add('active');
+        } else {
+          pill.classList.remove('active');
+        }
+      });
+
+      const gridItems = document.querySelectorAll('.g-col-1, .quarto-post');
+      gridItems.forEach(item => {
+        if (category === 'all') {
+          item.style.display = '';
+        } else {
+          const itemCatsBase64 = item.getAttribute('data-categories');
+          if (itemCatsBase64) {
+            const itemCats = decodeURIComponent(atob(itemCatsBase64)).split(',');
+            item.style.display = itemCats.includes(category) ? '' : 'none';
+          }
+        }
+      });
+    };
+
+    if (pillsContainer) {
+      pillsContainer.addEventListener('click', (e) => {
+        if (e.target.classList.contains('category-pill')) {
+          window.filterProjects(e.target.getAttribute('data-category'));
+        }
+      });
+    }
+  });
+</script>
+
+
+</section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -1003,7 +1131,7 @@ CP Timetables
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>Developed with Quarto open-source publishing tool</p>
+<p>Developed with Quarto open-source publishing tool. Design adapted from <a href="https://github.com/spcanelon/silvia" target="_blank">silvia</a>.</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;

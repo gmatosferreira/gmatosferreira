@@ -1,0 +1,133 @@
+[
+  {
+    "path": "https://scholar.tecnico.ulisboa.pt/records/vFoffyTV2ecQpcAMjga_ZVmh-boLRO5P89fo",
+    "image": "images/projects/master.jpg",
+    "title": "<i class=\"bi bi-pin-angle-fill\"></i> Through the bus driver's eye",
+    "description": "Master thesis on Transportation Systems, focused on how drivers knowledge can be used to monitor and plan a bus network",
+    "categories": [
+      "R code",
+      "Python",
+      "Publications",
+      "Transport policy",
+      "Transport planning"
+    ],
+    "author": "2025"
+  },
+  {
+    "path": "https://u-shift.github.io/GTFShift/",
+    "image": "images/projects/gtfshift.jpg",
+    "title": "<i class=\"bi bi-pin-angle-fill\"></i> GTFShift",
+    "description": "R package to explore and analyse GTFS files with a focus on identifying high frequency corridors",
+    "categories": [
+      "R code",
+      "OSM",
+      "GTFS standard",
+      "Decision support tool",
+      "Web tool"
+    ],
+    "author": "2025 (Ongoing)"
+  },
+  {
+    "path": "https://lisboaparapessoas.pt/autor/goncalomferreira/",
+    "image": "https://lisboaparapessoas.pt/wp-content/uploads/2024/01/jornalppanuncio.png",
+    "title": "<i class=\"bi bi-pin-angle-fill\"></i> Lisboa Para Pessoas",
+    "description": "At LPP I merge my passions for writing and the transportation world, covering stories about mobility and urban dynamics",
+    "categories": [
+      "Media",
+      "Publications"
+    ],
+    "author": "2024 (Ongoing)"
+  },
+  {
+    "path": "https://u-shift.github.io/IMPT-web/",
+    "image": "images/projects/imtp.jpg",
+    "title": "Transport Poverty Index",
+    "description": "Open and replicable index that enables measurement and monitoring of transport poverty",
+    "categories": [
+      "R code",
+      "Transport policy",
+      "Transport planning",
+      "Decision support tool",
+      "Web tool"
+    ],
+    "author": "2026 (Ongoing)"
+  },
+  {
+    "path": "https://github.com/ropensci/slopes",
+    "image": "https://user-images.githubusercontent.com/1825120/121820334-2435f080-cc8a-11eb-962c-79dcba97e459.png",
+    "title": "Slopes",
+    "description": "I am helping maintaining and updating this R package focused on calculate slopes of roads, rivers and trajectories",
+    "categories": [
+      "R code"
+    ],
+    "author": "2025 (Ongoing)"
+  },
+  {
+    "path": "https://github.com/gmatosferreira/Spreadsheet-to-GTFS",
+    "image": "https://images.unsplash.com/photo-1494627344499-afd1027ee1f5?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "title": "Spreadsheet to GTFS",
+    "description": "A simple script that enables the generation of a GTFS feed from a simple spreadsheet",
+    "categories": [
+      "R code",
+      "GTFS standard"
+    ],
+    "author": "2025"
+  },
+  {
+    "path": "https://github.com/lxparapessoas/rede-madrugada",
+    "image": "https://github.com/lxparapessoas/rede-madrugada/raw/main/images/screenshot.png",
+    "title": "Dawn transit network analsyis",
+    "description": "Aggregated analysis of transit offer in Lisbon Metro Area during the night time",
+    "categories": [
+      "R code",
+      "Web tool",
+      "GTFS standard"
+    ],
+    "author": "2025"
+  },
+  {
+    "path": "https://github.com/U-Shift/shademap-download-tool",
+    "image": "https://github.com/U-Shift/shademap-download-tool/raw/main/images/printscreen.png",
+    "title": "ShadeMap download tool",
+    "description": "Interactive tool that allows to export shadow and sun exposure layers from ShadeMap over a custom area, with a high level of detail",
+    "categories": [
+      "Web tool"
+    ],
+    "author": "2025"
+  },
+  {
+    "path": "https://www.cp.pt/info/en/w/real-time-info-project",
+    "image": "images/projects/cp-realtime-banner.jpg",
+    "title": "CP Real time info",
+    "description": "Real time monitoring of trains' position and occupancy to improve passenger information",
+    "categories": [
+      "Java",
+      "MQTT protocol",
+      "React framework",
+      "GTFS standard"
+    ],
+    "author": "2024"
+  },
+  {
+    "path": "https://github.com/gmatosferreira/Mapping-a-pedestrian-network",
+    "image": "https://github.com/gmatosferreira/Mapping-a-pedestrian-network/raw/main/files/network.png",
+    "title": "Mapping a pedestrian network",
+    "description": "Methodology for mapping a pedestrian network on the field using QField app",
+    "categories": [
+      "QGIS",
+      "Python"
+    ],
+    "author": "2024"
+  },
+  {
+    "path": "https://cp.pt/info/en/w/trains-timetables-pdf",
+    "image": "images/projects/cp-timetables.png",
+    "title": "CP Timetables",
+    "description": "Automation of the timetable generation process to assist the client management team",
+    "categories": [
+      "Java",
+      "React framework"
+    ],
+    "author": "2023"
+  }
+]
