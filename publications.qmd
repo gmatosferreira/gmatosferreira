@@ -39,6 +39,7 @@ publications <- tryCatch({
 }, error = function(e) list())
 presentations <- tryCatch({
   read_json("www/presentations.json")
+
 }, error = function(e) list())
 posters <- tryCatch({
   read_json("www/posters.json")
@@ -50,9 +51,8 @@ events <- tryCatch({
 pub_cats <- unique(unlist(lapply(publications, function(x) normalize_string_list(x$keywords))))
 pres_cats <- unique(unlist(lapply(presentations, extract_presentation_keywords)))
 poster_cats <- unique(unlist(lapply(posters, function(x) normalize_string_list(x$keywords))))
-event_cats <- unique(unlist(lapply(events, function(x) normalize_string_list(x$keywords))))
-all_categories <- unique(c(pub_cats, pres_cats, poster_cats, event_cats))
-all_categories <- all_categories[all_categories != ""]
+event_cats <- unique(unlist(lapply(events, function(x) c(normalize_string_list(x$keywords), normalize_string_list(x$type)))))
+all_categories <- normalize_category_keys(c(pub_cats, pres_cats, poster_cats, event_cats))
 if (length(all_categories) > 0) {
   all_categories <- sort(all_categories)
 }
@@ -61,8 +61,7 @@ cat('<div class="d-flex flex-wrap mb-4" id="category-pills">\n')
 cat('<div class="category-pill active" data-category="all">All</div>\n')
 if (length(all_categories) > 0) {
   for (cat in all_categories) {
-    cat_key <- tolower(cat)
-    cat(sprintf('<div class="category-pill" data-category="%s">%s</div>\n', cat_key, cat))
+    cat(sprintf('<div class="category-pill" data-category="%s">%s</div>\n', cat, cat))
   }
 }
 cat('</div>\n')
@@ -293,10 +292,12 @@ tryCatch({
     url <- if (!is.null(item$url)) item$url else "#"
     title <- if (!is.null(item$title)) item$title else ""
     description <- if (!is.null(item$description)) item$description else ""
+    type_values <- normalize_string_list(item$type)
     date_values <- normalize_string_list(item$date)
     event <- if (!is.null(item$event)) item$event else ""
     event_url <- if (!is.null(item$event_url)) item$event_url else ""
     image <- if (!is.null(item$image)) item$image else ""
+
     
     subtitle <- description
     date <- if (length(date_values) > 0) paste(date_values, collapse = "<br>") else ""
@@ -325,12 +326,13 @@ tryCatch({
     }
 
     keywords <- normalize_string_list(item$keywords)
-    
-    data_categories_raw <- paste(normalize_category_keys(keywords), collapse=",")
+    all_item_cats <- unique(c(type_values, keywords))
+
+    data_categories_raw <- paste(normalize_category_keys(all_item_cats), collapse=",")
     data_categories <- jsonlite::base64_enc(URLencode(data_categories_raw, reserved=TRUE))
     
     cats_html <- ""
-    for (cat in keywords) {
+    for (cat in all_item_cats) {
       cat_key <- tolower(cat)
       escaped_cat <- gsub("'", "\\\\'", cat_key)
       cats_html <- paste0(cats_html, sprintf('<div class="listing-category" onclick="window.filterPublications(\'%s\'); event.preventDefault(); event.stopPropagation(); return false;" style="cursor:pointer;">%s</div>\n', escaped_cat, cat))
@@ -370,13 +372,15 @@ tryCatch({
     url <- if (!is.null(item$url)) item$url else "#"
     title <- if (!is.null(item$title)) item$title else ""
     description <- if (!is.null(item$description)) item$description else ""
+    type_values <- normalize_string_list(item$type)
     date_values <- normalize_string_list(item$date)
     date <- if (length(date_values) > 0) paste(date_values, collapse = "<br>") else ""
     details <- if (!is.null(item$details)) item$details else ""
     image <- if (!is.null(item$image)) item$image else ""
     keywords <- normalize_string_list(item$keywords)
     
-    data_categories_raw <- paste(normalize_category_keys(keywords), collapse=",")
+    all_item_cats <- unique(c(type_values, keywords))
+    data_categories_raw <- paste(normalize_category_keys(all_item_cats), collapse=",")
     data_categories <- jsonlite::base64_enc(URLencode(data_categories_raw, reserved=TRUE))
     
     subtitle <- description

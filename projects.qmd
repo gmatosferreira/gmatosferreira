@@ -7,6 +7,19 @@ title: "Projects & Code"
 #| output: asis
 library(jsonlite)
 
+normalize_string_list <- function(value) {
+  if (is.null(value)) return(character(0))
+  if (is.list(value)) value <- unlist(value, use.names = FALSE)
+  value <- as.character(value)
+  value <- trimws(value)
+  value[!is.na(value) & value != ""]
+}
+
+normalize_category_keys <- function(values) {
+  keys <- tolower(normalize_string_list(values))
+  unique(keys[keys != ""])
+}
+
 # 1. Projects Grid
 projects <- tryCatch({
   read_json("www/projects.json")
@@ -22,8 +35,7 @@ proj_cats <- unique(unlist(lapply(projects, function(x) x$categories)))
 civic_cats <- unique(unlist(lapply(civic_pre, function(x) x$keywords)))
 os_cats <- unique(unlist(lapply(opensource_pre, function(x) x$keywords)))
 
-all_categories <- unique(c(proj_cats, civic_cats, os_cats))
-all_categories <- all_categories[all_categories != ""]
+all_categories <- normalize_category_keys(c(proj_cats, civic_cats, os_cats))
 if (length(all_categories) > 0) {
   all_categories <- sort(all_categories)
 }
@@ -46,12 +58,13 @@ if (length(projects) > 0) {
     categories <- item$categories
     if (is.null(categories)) categories <- list()
     
-    data_categories_raw <- paste(categories, collapse=",")
+    data_categories_raw <- paste(normalize_category_keys(categories), collapse=",")
     data_categories <- jsonlite::base64_enc(URLencode(data_categories_raw, reserved=TRUE))
     
     cats_html <- ""
     for (cat in categories) {
-      escaped_cat <- gsub("'", "\\\\'", cat)
+      cat_key <- tolower(cat)
+      escaped_cat <- gsub("'", "\\\\'", cat_key)
       cats_html <- paste0(cats_html, sprintf('<div class="listing-category" onclick="window.filterProjects(\'%s\'); event.preventDefault(); event.stopPropagation(); return false;" style="cursor:pointer;">%s</div>\n', escaped_cat, cat))
     }
     
@@ -105,17 +118,27 @@ tryCatch({
     url <- if (!is.null(item$url)) item$url else "#"
     title <- if (!is.null(item$title)) item$title else ""
     description <- if (!is.null(item$description)) item$description else ""
-    date <- if (!is.null(item$date)) item$date else ""
+    date_values <- item$date
+    if (is.null(date_values)) {
+      date_values <- character(0)
+    } else {
+      if (is.list(date_values)) date_values <- unlist(date_values, use.names = FALSE)
+      date_values <- as.character(date_values)
+      date_values <- trimws(date_values)
+      date_values <- date_values[!is.na(date_values) & date_values != ""]
+    }
+    date <- if (length(date_values) > 0) paste(date_values, collapse = "<br><br>") else ""
     details <- if (!is.null(item$details)) item$details else ""
     image <- if (!is.null(item$image)) item$image else ""
     keywords <- if (!is.null(item$keywords)) item$keywords else list()
     
-    data_categories_raw <- paste(keywords, collapse=",")
+    data_categories_raw <- paste(normalize_category_keys(keywords), collapse=",")
     data_categories <- jsonlite::base64_enc(URLencode(data_categories_raw, reserved=TRUE))
     
     cats_html <- ""
     for (cat in keywords) {
-      escaped_cat <- gsub("'", "\\\\'", cat)
+      cat_key <- tolower(cat)
+      escaped_cat <- gsub("'", "\\\\'", cat_key)
       cats_html <- paste0(cats_html, sprintf('<div class="listing-category" onclick="window.filterProjects(\'%s\'); event.preventDefault(); event.stopPropagation(); return false;" style="cursor:pointer;">%s</div>\n', escaped_cat, cat))
     }
 
@@ -168,17 +191,27 @@ tryCatch({
     url <- if (!is.null(item$url)) item$url else "#"
     title <- if (!is.null(item$title)) item$title else ""
     description <- if (!is.null(item$description)) item$description else ""
-    date <- if (!is.null(item$date)) item$date else ""
+    date_values <- item$date
+    if (is.null(date_values)) {
+      date_values <- character(0)      
+    } else {
+      if (is.list(date_values)) date_values <- unlist(date_values, use.names = FALSE)
+      date_values <- as.character(date_values)
+      date_values <- trimws(date_values)
+      date_values <- date_values[!is.na(date_values) & date_values != ""]
+    }
+    date <- if (length(date_values) > 0) paste(date_values, collapse = "<br>") else ""
     details <- if (!is.null(item$details)) item$details else ""
     image <- if (!is.null(item$image)) item$image else ""
     keywords <- if (!is.null(item$keywords)) item$keywords else list()
-    
-    data_categories_raw <- paste(keywords, collapse=",")
+            
+    data_categories_raw <- paste(normalize_category_keys(keywords), collapse=",")
     data_categories <- jsonlite::base64_enc(URLencode(data_categories_raw, reserved=TRUE))
     
     cats_html <- ""
     for (cat in keywords) {
-      escaped_cat <- gsub("'", "\\\\'", cat)
+      cat_key <- tolower(cat)
+      escaped_cat <- gsub("'", "\\\\'", cat_key)
       cats_html <- paste0(cats_html, sprintf('<div class="listing-category" onclick="window.filterProjects(\'%s\'); event.preventDefault(); event.stopPropagation(); return false;" style="cursor:pointer;">%s</div>\n', escaped_cat, cat))
     }
 
@@ -221,14 +254,16 @@ cat('</div>\n')
 cat('</div>\n')
 ```
 
+
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const grid = document.getElementById('projects-grid');
     const pillsContainer = document.getElementById('category-pills');
 
     window.filterProjects = function(category) {
+      const categoryKey = (category || '').toLowerCase();
       document.querySelectorAll('#category-pills .category-pill').forEach(pill => {
-        if (pill.getAttribute('data-category') === category) {
+        if (pill.getAttribute('data-category') === categoryKey) {
           pill.classList.add('active');
         } else {
           pill.classList.remove('active');
@@ -237,13 +272,13 @@ cat('</div>\n')
 
       const gridItems = document.querySelectorAll('.g-col-1, .quarto-post');
       gridItems.forEach(item => {
-        if (category === 'all') {
+        if (categoryKey === 'all') {
           item.style.display = '';
         } else {
           const itemCatsBase64 = item.getAttribute('data-categories');
           if (itemCatsBase64) {
-            const itemCats = decodeURIComponent(atob(itemCatsBase64)).split(',');
-            item.style.display = itemCats.includes(category) ? '' : 'none';
+            const itemCats = decodeURIComponent(atob(itemCatsBase64)).split(',').map(cat => cat.toLowerCase());
+            item.style.display = itemCats.includes(categoryKey) ? '' : 'none';
           }
         }
       });
