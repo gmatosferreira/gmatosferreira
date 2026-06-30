@@ -8,7 +8,6 @@
       "R code",
       "Python",
       "Publications",
-      "Transport policy",
       "Transport planning"
     ],
     "author": "2025"
@@ -40,12 +39,11 @@
   },
   {
     "path": "https://u-shift.github.io/IMPT-web/",
-    "image": "images/projects/imtp.jpg",
+    "image": "images/projects/impt.png",
     "title": "Transport Poverty Index",
     "description": "Open and replicable index that enables measurement and monitoring of transport poverty",
     "categories": [
       "R code",
-      "Transport policy",
       "Transport planning",
       "Decision support tool",
       "Web tool"
@@ -53,14 +51,15 @@
     "author": "2026 (Ongoing)"
   },
   {
-    "path": "https://github.com/ropensci/slopes",
-    "image": "https://user-images.githubusercontent.com/1825120/121820334-2435f080-cc8a-11eb-962c-79dcba97e459.png",
-    "title": "Slopes",
-    "description": "I am helping maintaining and updating this R package focused on calculate slopes of roads, rivers and trajectories",
+    "path": "https://github.com/gmatosferreira/ist-msc-thesis-quarto-template",
+    "image": "images/projects/ist_thesis_template_quarto.png",
+    "title": "IST MSc Thesis Quarto Template",
+    "description": "A Quarto template for Instituto Superior Técnico Master's thesis",
     "categories": [
-      "R code"
+      "R code",
+      "Quarto"
     ],
-    "author": "2025 (Ongoing)"
+    "author": "2025"
   },
   {
     "path": "https://github.com/gmatosferreira/Spreadsheet-to-GTFS",
@@ -91,20 +90,20 @@
     "title": "ShadeMap download tool",
     "description": "Interactive tool that allows to export shadow and sun exposure layers from ShadeMap over a custom area, with a high level of detail",
     "categories": [
-      "Web tool"
+      "Web tool",
+      "Research tools"
     ],
     "author": "2025"
   },
   {
-    "path": "https://www.cp.pt/info/en/w/real-time-info-project",
+    "path": "https://cp.pt/info/en/w/institucional/real-time-info-project",
     "image": "images/projects/cp-realtime-banner.jpg",
     "title": "CP Real time info",
     "description": "Real time monitoring of trains' position and occupancy to improve passenger information",
     "categories": [
       "Java",
-      "MQTT protocol",
-      "React framework",
-      "GTFS standard"
+      "GTFS standard",
+      "Transport Monitoring"
     ],
     "author": "2024"
   },
@@ -115,7 +114,8 @@
     "description": "Methodology for mapping a pedestrian network on the field using QField app",
     "categories": [
       "QGIS",
-      "Python"
+      "Python",
+      "Research tools"
     ],
     "author": "2024"
   },
@@ -125,8 +125,7 @@
     "title": "CP Timetables",
     "description": "Automation of the timetable generation process to assist the client management team",
     "categories": [
-      "Java",
-      "React framework"
+      "Java"
     ],
     "author": "2023"
   }

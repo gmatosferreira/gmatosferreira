@@ -1,5 +1,54 @@
 [
   {
+    "title": "go",
+    "url": "https://github.com/tmlmobilidade/go/issues/525",
+    "description": "the Lisbon Metropolitan Area platform for public transport operational monitoring and public information",
+    "date": "06/2026",
+    "keywords": [
+      "Transport monitoring",
+      "GTFS standard"
+    ]
+  },
+  {
+    "title": "tidytransit",
+    "url": "https://github.com/r-transit/tidytransit/pull/231",
+    "description": "an R package to read, validate, analyse and map GTFS feeds",
+    "date": "06/2025",
+    "keywords": [
+      "R code",
+      "GTFS standard"
+    ]
+  },
+  {
+    "title": "gtfstools",
+    "url": "https://github.com/ipea/gtfstools/pulls?q=author%3Agmatosferreira",
+    "description": "an R package to edit and analyse GTFS data",
+    "date": "05/2026",
+    "keywords": [
+      "R code",
+      "GTFS standard"
+    ]
+  },
+  {
+    "title": "transitland-atlas",
+    "url": "https://github.com/transitland/transitland-atlas/pulls?q=is%3Apr+author%3Agmatosferreira+",
+    "description": "a community-maintained catalog of public transportation GTFS data",
+    "date": ["03/2026", "03/2025"],
+    "keywords": [
+      "GTFS standard"
+    ]
+  },
+  {
+    "title": "slopes",
+    "url": "https://github.com/ropensci/slopes/pulls?q=author%3Agmatosferreira",
+    "description": "an R package to calculate slopes of roads, rivers and trajectories",
+    "date": "05-06/2025",
+    "keywords": [
+      "R code",
+      "Research tools"
+    ]
+  },
+  {
     "title": "gtfsrouter",
     "url": "https://github.com/UrbanAnalyst/gtfsrouter/releases/tag/v0.1.4",
     "description": "an R package to route and analyse GTFS data",
