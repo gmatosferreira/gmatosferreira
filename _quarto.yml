@@ -16,7 +16,7 @@ website:
       - publications.qmd
       - contacts.qmd
   page-footer: 
-    left: "Developed with Quarto open-source publishing tool" 
+    left: "Developed with Quarto open-source publishing tool. Design adapted from <a href='https://github.com/spcanelon/silvia' target='_blank'>silvia</a>." 
     right: 
       - icon: github
         href: https://github.com/gmatosferreira/gmatosferreira
