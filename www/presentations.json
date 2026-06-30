@@ -1,5 +1,21 @@
 [
   {
+    "title": "Digital planning tools to foster the shift for more sustainable modes of urban transportation",
+    "image": "images/presentations/ushift_citta.png",
+    "description": "a presentation on the digital planning tools developed by the U-Shift research lab, merging data, technology and human experience to support open and transparent transport planning, grounded on scientific knowledge",
+    "url": "https://ushift.pt/slides/2026_citta",
+    "type": "Conference",
+    "event": "CITTA 2026 conference",
+    "event_url": "https://www.uc.pt/fctuc/dec/citta2026/",
+    "date": "06/2026",
+    "keywords": [
+      "Transport planning",
+      "Decision support tool",
+      "R package",
+      "Web tool"
+    ]
+  },
+  {
     "title": "GTFShift",
     "image": "images/presentations/gtfshift.png",
     "description": "a presentation on the R package to assist bus lane prioritization using an open and replicable methodoogy",
@@ -14,7 +30,7 @@
       },
       {
         "url": "https://ushift.tecnico.ulisboa.pt/apps/gtfshift/slides",
-        "type": "Presentation",
+        "type": "Conference",
         "date": "02/2026",
         "event": "GET 2026 conference",
         "event_url": "https://www.getransportes.org/",
@@ -25,14 +41,16 @@
       "Bus lane prioritization",
       "R package",
       "Decision support tool",
-      "Transport planning"
+      "Transport planning",
+      "Network analysis",
+      "GTFS standard"
     ]
   },
   {
     "title": "SiteSelection",
     "image": "images/presentations/siteselection.png",
     "url": "https://docs.google.com/presentation/d/1ywH9UABP6ts086GQrb0SJvu7B2WnsHcwhLTc9lC7g8M/edit?usp=sharing",
-    "type": "Keynote Speech",
+    "type": "Conference",
     "description": "a keynote speech on this R package to identify complex areas",
     "event": "Streets4All Closing Seminar",
     "event_url": "https://streets4all.tecnico.ulisboa.pt/seminar/",
@@ -71,7 +89,7 @@
     "date": "10/2025",
     "keywords": [
       "Transport planning",
-      "Transport monitoring",
+      "Network analysis",
       "Decision support tool"
     ]
   },

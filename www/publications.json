@@ -1,5 +1,18 @@
 [
   {
+    "authors": "Gonçalo F. Matos, Rosa Félix",
+    "title": "Harmonizing GTFS shapes for transit network analysis using open data with GTFShift R package",
+    "date": "Paper under review",
+    "keywords": [
+      "GTFS Standard",
+      "R package",
+      "Transport planning",
+      "Network analysis"
+    ],
+    "url": "#",
+    "journal": ""
+  },
+  {
     "authors": "Gonçalo F. Matos, Rosa Félix, Filipe Moura",
     "title": "From the Steering Wheel to the Planning Table: A Participatory Framework for Bus Network Monitoring and Planning",
     "date": "Paper under review",

@@ -3,12 +3,19 @@
     "title": "Público",
     "url": "https://www.publico.pt/autor/goncalo-matos",
     "description": "the Portuguese newspaper where I casually write opinion articles about transportation",
-    "date": "12/2025 - Present"
+    "date": "12/2025 - Present",
+    "keywords": [
+      "Media",
+      "Publications"
+    ]
   },
   {
     "title": "OpenStreetMap",
     "url": "https://www.openstreetmap.org/user/Gon%C3%A7alo%20Matos/history",
     "description": "where I often contribute with improvements on transit data",
-    "date": "04/2025 - Present"
+    "date": "04/2025 - Present",
+    "keywords": [
+      "OSM"
+    ]
   }
 ]
