@@ -7,6 +7,32 @@ title: "Research & Publications"
 #| output: asis
 library(jsonlite)
 
+normalize_string_list <- function(value) {
+  if (is.null(value)) return(character(0))
+  if (is.list(value)) value <- unlist(value, use.names = FALSE)
+  value <- as.character(value)
+  value <- trimws(value)
+  value[!is.na(value) & value != ""]
+}
+
+normalize_category_keys <- function(values) {
+  keys <- tolower(normalize_string_list(values))
+  unique(keys[keys != ""])
+}
+
+extract_presentation_keywords <- function(item) {
+  keywords <- normalize_string_list(item$keywords)
+  instances <- item$instances
+
+  if (!is.null(instances) && is.list(instances) && length(instances) > 0) {
+    for (instance in instances) {
+      keywords <- c(keywords, normalize_string_list(instance$keywords))
+    }
+  }
+
+  unique(keywords)
+}
+
 # 0. Filters
 publications <- tryCatch({
   read_json("www/publications.json")
@@ -21,10 +47,10 @@ events <- tryCatch({
   read_json("www/events.json")
 }, error = function(e) list())
 
-pub_cats <- unique(unlist(lapply(publications, function(x) x$keywords)))
-pres_cats <- unique(unlist(lapply(presentations, function(x) x$keywords)))
-poster_cats <- unique(unlist(lapply(posters, function(x) x$keywords)))
-event_cats <- unique(unlist(lapply(events, function(x) x$keywords)))
+pub_cats <- unique(unlist(lapply(publications, function(x) normalize_string_list(x$keywords))))
+pres_cats <- unique(unlist(lapply(presentations, extract_presentation_keywords)))
+poster_cats <- unique(unlist(lapply(posters, function(x) normalize_string_list(x$keywords))))
+event_cats <- unique(unlist(lapply(events, function(x) normalize_string_list(x$keywords))))
 all_categories <- unique(c(pub_cats, pres_cats, poster_cats, event_cats))
 all_categories <- all_categories[all_categories != ""]
 if (length(all_categories) > 0) {
@@ -35,7 +61,8 @@ cat('<div class="d-flex flex-wrap mb-4" id="category-pills">\n')
 cat('<div class="category-pill active" data-category="all">All</div>\n')
 if (length(all_categories) > 0) {
   for (cat in all_categories) {
-    cat(sprintf('<div class="category-pill" data-category="%s">%s</div>\n', cat, cat))
+    cat_key <- tolower(cat)
+    cat(sprintf('<div class="category-pill" data-category="%s">%s</div>\n', cat_key, cat))
   }
 }
 cat('</div>\n')
@@ -47,22 +74,23 @@ cat('<div class="list quarto-listing-default" id="publications-list">\n')
 if (length(publications) > 0) {
   for (i in seq_along(publications)) {
     item <- publications[[i]]
-    keywords <- item$keywords
-    if (is.null(keywords)) keywords <- list()
+    keywords <- extract_presentation_keywords(item)
     
-    data_categories_raw <- paste(keywords, collapse=",")
+    data_categories_raw <- paste(normalize_category_keys(keywords), collapse=",")
     data_categories <- jsonlite::base64_enc(URLencode(data_categories_raw, reserved=TRUE))
     
     cats_html <- ""
     for (cat in keywords) {
-      escaped_cat <- gsub("'", "\\\\'", cat)
+      cat_key <- tolower(cat)
+      escaped_cat <- gsub("'", "\\\\'", cat_key)
       cats_html <- paste0(cats_html, sprintf('<div class="listing-category" onclick="window.filterPublications(\'%s\'); event.preventDefault(); event.stopPropagation(); return false;" style="cursor:pointer;">%s</div>\n', escaped_cat, cat))
     }
     
     url <- if (!is.null(item$url) && item$url != "") item$url else "#"
     title <- if (!is.null(item$title)) item$title else ""
     journal <- if (!is.null(item$journal)) item$journal else ""
-    date <- if (!is.null(item$date)) item$date else ""
+    date_values <- normalize_string_list(item$date)
+    date <- if (length(date_values) > 0) paste(date_values, collapse = "<br>") else ""
     authors <- if (!is.null(item$authors)) item$authors else ""
     image <- if (!is.null(item$image)) item$image else ""
     
@@ -111,46 +139,115 @@ cat('</div>\n')
 cat('<div class="listing-no-matching d-none">No matching items</div>\n')
 cat('</div>\n')
 
-# 2. Presentations
+# 2. Presentations -------------------------------------------------------«
 cat('\n# Presentations\n\n')
 cat('<div class="quarto-listing quarto-listing-container-default">\n')
 cat('<div class="list quarto-listing-default">\n')
 tryCatch({
   for (i in seq_along(presentations)) {
     item <- presentations[[i]]
-    url <- if (!is.null(item$url)) item$url else "#"
+    item_url <- if (!is.null(item$url)) item$url else ""
     title <- if (!is.null(item$title)) item$title else ""
-    type <- if (!is.null(item$type)) item$type else ""
     description <- if (!is.null(item$description)) item$description else ""
-    date <- if (!is.null(item$date)) item$date else ""
-    event <- if (!is.null(item$event)) item$event else ""
-    event_url <- if (!is.null(item$event_url)) item$event_url else ""
-    context <- if (!is.null(item$context)) item$context else ""
-    context_url <- if (!is.null(item$context_url)) item$context_url else ""
     image <- if (!is.null(item$image)) item$image else ""
-    keywords <- if (!is.null(item$keywords)) item$keywords else list()
-    
-    data_categories <- ""
-    cats_html <- ""
-    all_item_cats <- list()
-    if (type != "") all_item_cats <- c(all_item_cats, type)
-    if (length(keywords) > 0) all_item_cats <- c(all_item_cats, unlist(keywords))
-    
-    if (length(all_item_cats) > 0) {
-      data_categories_raw <- paste(all_item_cats, collapse=",")
-      data_categories <- jsonlite::base64_enc(URLencode(data_categories_raw, reserved=TRUE))
-      for (cat in all_item_cats) {
-        escaped_cat <- gsub("'", "\\\\'", cat)
-        cats_html <- paste0(cats_html, sprintf('<div class="listing-category" onclick="window.filterPublications(\'%s\'); event.preventDefault(); event.stopPropagation(); return false;" style="cursor:pointer;">%s</div>\n', escaped_cat, cat))
+    keywords <- normalize_string_list(item$keywords)
+    base_type_values <- normalize_string_list(item$type)
+
+    instances <- item$instances
+    if (is.null(instances) || !is.list(instances) || length(instances) == 0) {
+      instances <- list(list(
+        url = item$url,
+        date = item$date,
+        event = item$event,
+        event_url = item$event_url,
+        context = item$context,
+        context_url = item$context_url,
+        type = item$type,
+        description = item$description
+      ))
+
+    }
+
+    first_instance_url <- ""
+    if (length(instances) > 0 && !is.null(instances[[1]]$url) && instances[[1]]$url != "") {
+      first_instance_url <- instances[[1]]$url
+    }
+    url <- if (first_instance_url != "") first_instance_url else if (item_url != "") item_url else "#"
+
+    all_type_values <- base_type_values
+    date_lines <- character(0)
+
+
+    for (instance in instances) {
+      inst_type_values <- normalize_string_list(instance$type)
+      if (length(inst_type_values) == 0) inst_type_values <- base_type_values
+      all_type_values <- c(all_type_values, inst_type_values)
+      inst_type <- if (length(inst_type_values) > 0) paste(inst_type_values, collapse = ", ") else ""
+
+      inst_event <- if (!is.null(instance$event)) instance$event else ""
+      inst_event_url <- if (!is.null(instance$event_url)) instance$event_url else ""
+      inst_url <- if (!is.null(instance$url)) instance$url else ""
+      if (inst_url == "") inst_url <- url
+      inst_context <- if (!is.null(instance$context)) instance$context else ""
+      inst_dates <- normalize_string_list(instance$date)
+
+      secondary_text <- ""
+      if (inst_event != "" && inst_context != "") {
+        secondary_text <- sprintf('%s (%s)', inst_event, inst_context)
+      } else if (inst_event != "") {
+        secondary_text <- inst_event
+      } else if (inst_context != "") {
+        secondary_text <- inst_context
+      }
+      
+      secondary_html <- ""
+      if (secondary_text != "") {
+        secondary_html <- if (inst_event_url != "") {
+          sprintf('<a class="no-external" href="%s" target="_blank">%s</a>', inst_event_url, secondary_text)
+        } else {
+          secondary_text
+        }
+      }
+
+      if (length(inst_dates) > 0) {
+        for (inst_date in inst_dates) {
+          icon_html <- ""
+          if (inst_url != "") {
+            icon_html <- sprintf(' <a class="no-external" href="%s" target="_blank" aria-label="Presentation link"><i class="bi bi-collection-play-fill"></i></a>', inst_url)
+          }
+
+          if (secondary_html != "") {
+            if (inst_type != "") {
+              date_lines <- c(date_lines, sprintf('%s, %s%s<br><span class="listing-date-secondary">%s</span>', inst_date, inst_type, icon_html, secondary_html))
+            } else {
+              date_lines <- c(date_lines, sprintf('%s%s<br><span class="listing-date-secondary">%s</span>', inst_date, icon_html, secondary_html))
+            }
+          } else {
+            date_lines <- c(date_lines, sprintf('%s%s', inst_date, icon_html))
+          }
+        }
+      } else if (secondary_html != "") {
+        date_lines <- c(date_lines, sprintf('<span class="listing-date-secondary">%s</span>', secondary_html))
       }
     }
 
-    subtitle <- sprintf('a %s %s', type, description)
-    if (event != "") {
-      subtitle <- paste0(subtitle, if (event_url != "") sprintf(', presented at <a href="%s" target="_blank">%s</a>', event_url, event) else sprintf(', presented at %s', event))
-    }
-    if (context != "") {
-      subtitle <- paste0(subtitle, if (context_url != "") sprintf(', <a href="%s" target="_blank">%s</a>', context_url, context) else sprintf(', %s', context))
+    all_type_values <- unique(all_type_values)
+    all_type_values <- all_type_values[all_type_values != ""]
+    date <- if (length(date_lines) > 0) paste(date_lines, collapse = "<br><br>") else ""
+    subtitle <- description
+    
+    data_categories <- ""
+    cats_html <- ""
+    all_item_cats <- c(all_type_values, keywords)
+    
+    if (length(all_item_cats) > 0) {
+      data_categories_raw <- paste(normalize_category_keys(all_item_cats), collapse=",")
+      data_categories <- jsonlite::base64_enc(URLencode(data_categories_raw, reserved=TRUE))
+      for (cat in unique(all_item_cats)) {
+        cat_key <- tolower(cat)
+        escaped_cat <- gsub("'", "\\\\'", cat_key)
+        cats_html <- paste0(cats_html, sprintf('<div class="listing-category" onclick="window.filterPublications(\'%s\'); event.preventDefault(); event.stopPropagation(); return false;" style="cursor:pointer;">%s</div>\n', escaped_cat, cat))
+      }
     }
     
     target <- if (url != "#") 'target="_blank"' else ''
@@ -176,13 +273,11 @@ tryCatch({
 </div>
 </div>
 <div class="metadata">
-<a class="no-external" href="%s" %s>
 <div class="listing-date">
 %s
 </div>
-</a>
 </div>
-</div>\n', image_class, i-1, data_categories, thumbnail_html, url, target, title, subtitle, cats_html, url, target, date))
+</div>\n', image_class, i-1, data_categories, thumbnail_html, url, target, title, subtitle, cats_html, date))
   }
 }, error = function(e) NULL)
 cat('</div>\n')
@@ -197,17 +292,28 @@ tryCatch({
     item <- posters[[i]]
     url <- if (!is.null(item$url)) item$url else "#"
     title <- if (!is.null(item$title)) item$title else ""
-    type <- if (!is.null(item$type)) item$type else ""
     description <- if (!is.null(item$description)) item$description else ""
-    date <- if (!is.null(item$date)) item$date else ""
+    date_values <- normalize_string_list(item$date)
     event <- if (!is.null(item$event)) item$event else ""
     event_url <- if (!is.null(item$event_url)) item$event_url else ""
     image <- if (!is.null(item$image)) item$image else ""
     
-    subtitle <- sprintf('a %s %s', type, description)
+    subtitle <- description
+    date <- if (length(date_values) > 0) paste(date_values, collapse = "<br>") else ""
     if (event != "") {
-      subtitle <- paste0(subtitle, if (event_url != "") sprintf(', presented at <a href="%s" target="_blank">%s</a>', event_url, event) else sprintf(', presented at %s', event))
+      event_html <- if (event_url != "") {
+        sprintf('<a class="no-external" href="%s" target="_blank">%s</a>', event_url, event)
+      } else {
+        event
+      }
+
+      if (date != "") {
+        date <- sprintf('%s<br><span class="listing-date-secondary">%s</span>', date, event_html)
+      } else {
+        date <- sprintf('<span class="listing-date-secondary">%s</span>', event_html)
+      }
     }
+
     
     target <- if (url != "#") 'target="_blank"' else ''
     
@@ -218,15 +324,15 @@ tryCatch({
       thumbnail_html <- sprintf('\n<div class="thumbnail">\n<a class="no-external" href="%s" %s>\n<p><img loading="lazy" src="%s" class="thumbnail-image"></p>\n</a>\n</div>', url, target, image)
     }
 
-    keywords <- item$keywords
-    if (is.null(keywords)) keywords <- list()
+    keywords <- normalize_string_list(item$keywords)
     
-    data_categories_raw <- paste(keywords, collapse=",")
+    data_categories_raw <- paste(normalize_category_keys(keywords), collapse=",")
     data_categories <- jsonlite::base64_enc(URLencode(data_categories_raw, reserved=TRUE))
     
     cats_html <- ""
     for (cat in keywords) {
-      escaped_cat <- gsub("'", "\\\\'", cat)
+      cat_key <- tolower(cat)
+      escaped_cat <- gsub("'", "\\\\'", cat_key)
       cats_html <- paste0(cats_html, sprintf('<div class="listing-category" onclick="window.filterPublications(\'%s\'); event.preventDefault(); event.stopPropagation(); return false;" style="cursor:pointer;">%s</div>\n', escaped_cat, cat))
     }
     
@@ -244,13 +350,11 @@ tryCatch({
 </div>
 </div>
 <div class="metadata">
-<a class="no-external" href="%s" %s>
 <div class="listing-date">
 %s
 </div>
-</a>
 </div>
-</div>\n', image_class, i-1, data_categories, thumbnail_html, url, target, title, subtitle, cats_html, url, target, date))
+</div>\n', image_class, i-1, data_categories, thumbnail_html, url, target, title, subtitle, cats_html, date))
   }
 }, error = function(e) NULL)
 cat('</div>\n')
@@ -266,17 +370,24 @@ tryCatch({
     url <- if (!is.null(item$url)) item$url else "#"
     title <- if (!is.null(item$title)) item$title else ""
     description <- if (!is.null(item$description)) item$description else ""
-    date <- if (!is.null(item$date)) item$date else ""
+    date_values <- normalize_string_list(item$date)
+    date <- if (length(date_values) > 0) paste(date_values, collapse = "<br>") else ""
     details <- if (!is.null(item$details)) item$details else ""
     image <- if (!is.null(item$image)) item$image else ""
-    keywords <- item$keywords
-    if (is.null(keywords)) keywords <- list()
+    keywords <- normalize_string_list(item$keywords)
     
-    data_categories_raw <- paste(keywords, collapse=",")
+    data_categories_raw <- paste(normalize_category_keys(keywords), collapse=",")
     data_categories <- jsonlite::base64_enc(URLencode(data_categories_raw, reserved=TRUE))
     
     subtitle <- description
-    if (details != "") subtitle <- details
+    if (details != "") {
+      details_html <- sprintf('<span class="listing-date-secondary">%s</span>', details)
+      if (subtitle != "") {
+        subtitle <- sprintf('%s<br>%s', subtitle, details_html)
+      } else {
+        subtitle <- details_html
+      }
+    }
     
     target <- if (url != "#") 'target="_blank"' else ''
     
@@ -310,6 +421,9 @@ tryCatch({
 cat('</div>\n')
 cat('</div>\n')
 ```
+
+
+
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
@@ -350,4 +464,3 @@ cat('</div>\n')
     }
   });
 </script>
-

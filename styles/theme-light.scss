@@ -321,6 +321,14 @@ section#posters .quarto-post .thumbnail-image {
   border-radius: 4px;
 }
 
+section#presentations .listing-date-secondary,
+section#posters .listing-date-secondary,
+section#events-organization .listing-date-secondary {
+  display: inline-block;
+  font-size: 0.88em;
+  opacity: 0.5;
+}
+
 // Listing cards
 .card {
   background: rgba(255, 255, 255, 0.35);
