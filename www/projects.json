@@ -78,6 +78,7 @@
   {
     "path": "https://lxparapessoas.github.io/rede-madrugada/",
     "image": "https://github.com/lxparapessoas/rede-madrugada/raw/main/images/screenshot.png",
+    "imagePosition": "top",
     "title": "Dawn transit network analsyis",
     "description": "Aggregated analysis of transit offer in Lisbon Metro Area during the night time",
     "categories": [
