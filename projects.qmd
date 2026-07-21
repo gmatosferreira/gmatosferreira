@@ -20,6 +20,16 @@ normalize_category_keys <- function(values) {
   unique(keys[keys != ""])
 }
 
+normalize_image_position <- function(value) {
+  values <- normalize_string_list(value)
+  if (length(values) == 0) return("center")
+
+  position <- values[[1]]
+  if (!grepl("^[A-Za-z0-9 .%+-]+$", position)) return("center")
+
+  position
+}
+
 # 1. Projects Grid
 projects <- tryCatch({
   read_json("www/projects.json")
@@ -71,6 +81,7 @@ if (length(projects) > 0) {
     
     path <- if (!is.null(item$path)) item$path else "#"
     image <- if (!is.null(item$image)) item$image else ""
+    image_position <- normalize_image_position(item$imagePosition)
     title <- if (!is.null(item$title)) item$title else ""
     description <- if (!is.null(item$description)) item$description else ""
     author <- if (!is.null(item$author)) item$author else ""
@@ -80,7 +91,7 @@ if (length(projects) > 0) {
 <a href="%s" class="quarto-grid-link" target="_blank">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img loading="lazy" src="%s" class="thumbnail-image card-img" style="height: 150px;">
+<img loading="lazy" src="%s" class="thumbnail-image card-img" style="height: 150px; object-position: %s;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
@@ -99,7 +110,7 @@ if (length(projects) > 0) {
 </div>
 </div>
 </div></a>
-</div>\n', i-1, data_categories, path, image, title, cats_html, description, author))
+</div>\n', i-1, data_categories, path, image, image_position, title, cats_html, description, author))
   }
 }
 
@@ -254,6 +265,7 @@ tryCatch({
 cat('</div>\n')
 cat('</div>\n')
 ```
+
 
 
 

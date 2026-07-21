@@ -29,6 +29,7 @@
   {
     "path": "https://lisboaparapessoas.pt/autor/goncalomferreira/",
     "image": "https://lisboaparapessoas.pt/wp-content/uploads/2024/01/jornalppanuncio.png",
+    "imagePosition": "top",
     "title": "<i class=\"bi bi-pin-angle-fill\"></i> Lisboa Para Pessoas",
     "description": "At LPP I merge my passions for writing and the transportation world, covering stories about mobility and urban dynamics",
     "categories": [
@@ -40,6 +41,7 @@
   {
     "path": "https://ushift.pt/apps/impt",
     "image": "images/projects/impt.png",
+    "imagePosition": "bottom",
     "title": "Transport Poverty Index",
     "description": "Open and replicable index that enables measurement and monitoring of transport poverty",
     "categories": [
@@ -53,6 +55,7 @@
   {
     "path": "https://github.com/gmatosferreira/ist-msc-thesis-quarto-template",
     "image": "images/projects/ist_thesis_template_quarto.png",
+    "imagePosition": "top",
     "title": "IST MSc Thesis Quarto Template",
     "description": "A Quarto template for Instituto Superior Técnico Master's thesis",
     "categories": [
