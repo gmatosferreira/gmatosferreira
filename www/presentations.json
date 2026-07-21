@@ -95,7 +95,7 @@
   {
     "title": "Making a website with Quarto",
     "image": "images/presentations/quarto.png",
-    "url": "https://www.dtnlisbon.pt/slides.html",
+    "url": "https://u-shift.github.io/DTNlisbon/slides.html",
     "type": "Lecture",
     "description": "a lecture on using Quarto publishing system to build a website with R",
     "event": "Tools and Skills for Reproducible Transport Research Course",

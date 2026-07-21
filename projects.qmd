@@ -40,6 +40,7 @@ if (length(all_categories) > 0) {
   all_categories <- sort(all_categories)
 }
 
+
 cat('<div class="d-flex flex-wrap mb-4" id="category-pills">\n')
 cat('<div class="category-pill active" data-category="all">All</div>\n')
 if (length(all_categories) > 0) {
@@ -253,6 +254,7 @@ tryCatch({
 cat('</div>\n')
 cat('</div>\n')
 ```
+
 
 
 <script>
