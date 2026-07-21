@@ -38,7 +38,7 @@
     "author": "2024 (Ongoing)"
   },
   {
-    "path": "https://u-shift.github.io/IMPT-web/",
+    "path": "https://ushift.pt/apps/impt",
     "image": "images/projects/impt.png",
     "title": "Transport Poverty Index",
     "description": "Open and replicable index that enables measurement and monitoring of transport poverty",
@@ -48,7 +48,7 @@
       "Decision support tool",
       "Web tool"
     ],
-    "author": "2026 (Ongoing)"
+    "author": "2026"
   },
   {
     "path": "https://github.com/gmatosferreira/ist-msc-thesis-quarto-template",
@@ -73,7 +73,7 @@
     "author": "2025"
   },
   {
-    "path": "https://github.com/lxparapessoas/rede-madrugada",
+    "path": "https://lxparapessoas.github.io/rede-madrugada/",
     "image": "https://github.com/lxparapessoas/rede-madrugada/raw/main/images/screenshot.png",
     "title": "Dawn transit network analsyis",
     "description": "Aggregated analysis of transit offer in Lisbon Metro Area during the night time",
@@ -85,7 +85,7 @@
     "author": "2025"
   },
   {
-    "path": "https://github.com/U-Shift/shademap-download-tool",
+    "path": "https://ushift.pt/apps/shademap",
     "image": "https://github.com/U-Shift/shademap-download-tool/raw/main/images/printscreen.png",
     "title": "ShadeMap download tool",
     "description": "Interactive tool that allows to export shadow and sun exposure layers from ShadeMap over a custom area, with a high level of detail",
