@@ -33,6 +33,9 @@ format:
       - styles/theme-light.scss
     css: styles.css
     toc: false
+    header-includes: |
+      <script data-goatcounter="https://goncaloafmatos.goatcounter.com/count"
+              async src="//gc.zgo.at/count.js"></script>
 
 
 
