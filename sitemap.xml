@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.gmatos.pt/index.html</loc>
-    <lastmod>2026-07-21T09:15:53.343Z</lastmod>
+    <loc>https://www.gmatos.pt/projects.html</loc>
+    <lastmod>2026-07-25T10:20:16.717Z</lastmod>
   </url>
   <url>
     <loc>https://www.gmatos.pt/contacts.html</loc>
-    <lastmod>2026-07-21T09:15:53.312Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.gmatos.pt/projects.html</loc>
-    <lastmod>2026-07-21T09:15:53.343Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.gmatos.pt/publications.html</loc>
-    <lastmod>2026-07-21T09:15:53.344Z</lastmod>
+    <lastmod>2026-07-25T10:20:16.682Z</lastmod>
   </url>
   <url>
     <loc>https://www.gmatos.pt/about.html</loc>
-    <lastmod>2026-07-21T09:15:53.312Z</lastmod>
+    <lastmod>2026-07-25T10:20:16.682Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.gmatos.pt/publications.html</loc>
+    <lastmod>2026-07-25T10:20:16.717Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.gmatos.pt/index.html</loc>
+    <lastmod>2026-07-25T10:20:16.717Z</lastmod>
   </url>
 </urlset>
