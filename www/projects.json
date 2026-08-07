@@ -39,6 +39,17 @@
     "author": "2024 (Ongoing)"
   },
   {
+    "path": "https://u-shift.github.io/MobilityDataPT/",
+    "image": "images/projects/mobilitydatapt.jpg",
+    "title": "MobilityDataPT",
+    "description": "R package to get mobility data for Portugal",
+    "categories": [
+      "R code",
+      "Research tools"
+    ],
+    "author": "2026 (Ongoing)"
+  },
+  {
     "path": "https://ushift.pt/apps/impt",
     "image": "images/projects/impt.png",
     "imagePosition": "bottom",
