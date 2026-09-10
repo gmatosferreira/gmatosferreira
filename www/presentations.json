@@ -1,24 +1,17 @@
 [
   {
-    "title": "Digital planning tools to foster the shift for more sustainable modes of urban transportation",
-    "image": "images/presentations/ushift_citta.png",
-    "description": "a presentation on the digital planning tools developed by the U-Shift research lab, merging data, technology and human experience to support open and transparent transport planning, grounded on scientific knowledge",
-    "url": "https://ushift.pt/slides/2026_citta",
-    "type": "Conference",
-    "event": "CITTA 2026 conference",
-    "event_url": "https://www.uc.pt/fctuc/dec/citta2026/",
-    "date": "06/2026",
-    "keywords": [
-      "Transport planning",
-      "Decision support tool",
-      "R package"
-    ]
-  },
-  {
     "title": "GTFShift",
-    "image": "images/presentations/gtfshift.png",
+    "image": "images/presentations/etc_gtfshift.png",
     "description": "a presentation on the R package to assist bus lane prioritization using an open and replicable methodoogy",
     "instances": [
+      {
+        "url": "https://ushift.pt/slides/2026_etc_gtfshift",
+        "type": "Conference",
+        "date": "09/2026",
+        "event": "European Transport Conference 2026",
+        "event_url": "https://aetransport.org/etc",
+        "context": "Conference Session"
+      },
       {
         "url": "https://ushift.tecnico.ulisboa.pt/apps/gtfshift/slides_gmu_20260512",
         "type": "Lecture",
@@ -46,6 +39,50 @@
     ]
   },
   {
+    "title": "Through the Bus Driver’s Eye",
+    "image": "images/presentations/etc_drivers.png",
+    "description": "a presentation on the framework I developed for my master's thesis, focused on how drivers knowledge can be used to monitor and plan a bus network",
+    "keywords": [
+      "Transport policy",
+      "Transport planning",
+      "Transport monitoring",
+      "Participatory planning"
+    ],
+    "instances": [
+      {
+        "url": "https://ushift.pt/slides/2026_etc_drivers",
+        "type": "Conference",
+        "date": "09/2026",
+        "event": "European Transport Conference 2026",
+        "event_url": "https://aetransport.org/etc",
+        "context": "Conference Session"
+      },
+      {
+        "url": "https://gmatosferreira.github.io/master-thesis/slides_short.html",
+        "type": "Public Defense of Master Thesis",
+        "date": "11/2025",
+        "event": "Master in Transportation Systems",
+        "event_url": "https://tecnico.ulisboa.pt/en/education/courses/masters-programmes/transportation-systems/",
+        "context": "Public Defense of Master Thesis"
+      }
+    ]
+  },
+  {
+    "title": "Digital planning tools to foster the shift for more sustainable modes of urban transportation",
+    "image": "images/presentations/ushift_citta.png",
+    "description": "a presentation on the digital planning tools developed by the U-Shift research lab, merging data, technology and human experience to support open and transparent transport planning, grounded on scientific knowledge",
+    "url": "https://ushift.pt/slides/2026_citta",
+    "type": "Conference",
+    "event": "CITTA 2026 conference",
+    "event_url": "https://www.uc.pt/fctuc/dec/citta2026/",
+    "date": "06/2026",
+    "keywords": [
+      "Transport planning",
+      "Decision support tool",
+      "R package"
+    ]
+  },
+  {
     "title": "SiteSelection",
     "image": "images/presentations/siteselection.png",
     "url": "https://docs.google.com/presentation/d/1ywH9UABP6ts086GQrb0SJvu7B2WnsHcwhLTc9lC7g8M/edit?usp=sharing",
@@ -58,22 +95,6 @@
       "Dynamic space allocation",
       "Decision support tool",
       "R package"
-    ]
-  },
-  {
-    "title": "Through the Bus Driver’s Eye",
-    "image": "images/presentations/masters.png",
-    "url": "https://gmatosferreira.github.io/master-thesis/slides_short.html",
-    "type": "Presentation",
-    "description": "the public defense of my master thesis, focused on how drivers knowledge can be used to monitor and plan a bus network",
-    "date": "11/2025",
-    "event": "Master in Transportation Systems",
-    "event_url": "https://tecnico.ulisboa.pt/en/education/courses/masters-programmes/transportation-systems/",
-    "keywords": [
-      "Transport policy",
-      "Transport planning",
-      "Transport monitoring",
-      "Participatory planning"
     ]
   },
   {
