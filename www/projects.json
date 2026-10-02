@@ -16,13 +16,12 @@
     "path": "https://u-shift.github.io/GTFShift/",
     "image": "images/projects/gtfshift.jpg",
     "title": "<i class=\"bi bi-pin-angle-fill\"></i> GTFShift",
-    "description": "R package to explore and analyse GTFS files with a focus on identifying high frequency corridors",
+    "description": "An R package to harmonize GTFS and OSM data, enabling the integration and exploration of different layers of transit data.",
     "categories": [
       "R code",
       "OSM",
       "GTFS standard",
-      "Decision support tool",
-      "Web tool"
+      "Research tool"
     ],
     "author": "2025 (Ongoing)"
   },
@@ -37,6 +36,19 @@
       "Publications"
     ],
     "author": "2024 (Ongoing)"
+  },
+  {
+    "path": "https://ushift.pt/apps/gtfshift-tml/",
+    "image": "images/projects/gtfshift-tml.png",
+    "title": "GTFShift operational dashboard",
+    "description": "Bus lane prioritisation & operational analysis web interactive tool",
+    "categories": [
+      "Web tool",
+      "Decision support tool",
+      "Transport planning",
+      "Transport monitoring"
+    ],
+    "author": "2026 (Ongoing)"
   },
   {
     "path": "https://u-shift.github.io/MobilityDataPT/",
